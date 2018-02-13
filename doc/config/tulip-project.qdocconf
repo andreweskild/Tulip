@@ -1,0 +1,58 @@
+include($QT_INSTALL_DOCS/global/macros.qdocconf)
+include($QT_INSTALL_DOCS/global/qt-cpp-defines.qdocconf)
+include($QT_INSTALL_DOCS/global/compat.qdocconf)
+include($QT_INSTALL_DOCS/global/fileextensions.qdocconf)
+
+project = Tulip
+description = Tulip Reference Documentation
+indexes += \
+    $QT_INSTALL_DOCS/qtqml/qtqml.index \
+    $QT_INSTALL_DOCS/qtquick/qtquick.index \
+    $QT_INSTALL_DOCS/qtquickcontrols2/qtquickcontrols2.index \
+    $QT_INSTALL_DOCS/qtgraphicaleffects/qtgraphicaleffects.index
+
+depends = qtcore qtgui qtdoc qtqml qtquick qtquickcontrols2
+headerdirs += ../../src
+sourcedirs += \
+    ../src \
+    ../../src/imports/controls \
+    ../../src/imports/core \
+    ../../src/imports/effects \
+    ../../src/imports/layouts \
+    ../../src/imports/templates
+sources.fileextensions = "*.qml *.qdoc *.cpp *.js"
+headers.fileextensions = "*.h"
+imagedirs = ../images
+exampledirs = .. ../snippets
+
+include(macros.qdocconf)
+
+qhp.projects = Tulip
+
+qhp.Tulip.file = tulip.qhp
+qhp.Tulip.namespace = io.tulip.Tulip.$TULIP_VERSION_TAG
+qhp.Tulip.virtualFolder = tulip
+qhp.Tulip.indexTitle = Tulip
+qhp.Tulip.filterAttributes = Tulip $TULIP_VERSION
+qhp.Tulip.customFilters.Tulip.name = Tulip $TULIP_VERSION
+qhp.Tulip.customFilters.Tulip.filterAttributes = Tulip $TULIP_VERSION
+qhp.Tulip.indexRoot =
+
+qhp.Tulip.subprojects = classes qmltypes
+
+qhp.Tulip.subprojects.classes.title = C++ CLasses
+qhp.Tulip.subprojects.classes.indexTitle = Tulip Classes and Namespaces
+qhp.Tulip.subprojects.classes.selector = module:Tulip
+qhp.Tulip.subprojects.classes.sortPages = true
+
+qhp.Tulip.subprojects.qmltypes.title = QML Types
+qhp.Tulip.subprojects.qmltypes.indexTitle = Tulip QML Types
+qhp.Tulip.subprojects.qmltypes.selector = qmlclass
+qhp.Tulip.subprojects.qmltypes.sortPages = true
+
+# Doxygen compatibility commands
+macro.see                       = "\\sa"
+macro.function                  = "\\fn"
+
+navigation.homepage = Tulip Reference Documentation
+buildversion = Tulip $TULIP_VERSION

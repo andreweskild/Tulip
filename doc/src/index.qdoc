@@ -1,0 +1,42 @@
+/*
+ * This file is part of Tulip.
+ *
+ * Copyright (C) 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ *
+ * $BEGIN_LICENSE:MPL2$
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * $END_LICENSE$
+ */
+
+/*!
+    \page index.html
+    \keyword Tulip Reference Documentation
+
+    Tulip is a collection of cross-platform QtQuick components for building  and dynamic applications.
+
+    \section2 Prerequisites
+
+    Tulip controls are based on \l{Qt Quick Controls 2}.
+
+    \section2 Instructions
+
+    \list
+      \li \l{Deploying Tulip applications}{Deployment}
+    \endlist
+
+    \section2 QML Modules
+
+    Tulip is comprised of several QML modules.
+
+    \list
+      \li \l{Tulip Core QML Types}{Tulip Core}
+      \li \l{Tulip Controls QML Types}{Tulip Controls}
+      \li \l{Tulip Effects QML Types}{Tulip Effects}
+      \li \l{Tulip Layouts QML Types}{Tulip Layouts}
+      \li \l{Tulip Templates QML Types}{Tulip Templates}
+    \endlist
+*/

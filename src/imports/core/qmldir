@@ -1,0 +1,6 @@
+module Tulip.Core
+plugin tulipcoreplugin
+classname TulipCorePlugin
+typeinfo plugins.qmltypes
+
+Object 1.0 Object.qml

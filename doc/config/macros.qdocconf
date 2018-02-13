@@ -1,0 +1,2 @@
+macro.TULIP = "Tulip"
+macro.version = $TULIP_VERSION

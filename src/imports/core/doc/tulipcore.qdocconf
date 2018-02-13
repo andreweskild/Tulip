@@ -1,0 +1,47 @@
+include(../../doc/defaults.qdocconf)
+
+project                 = TulipCore
+description             = Tulip Core Reference Documentation
+version                 = $TULIP_VERSION
+
+qhp.projects            = TulipCore
+
+qhp.Tulip.file          = tulipcore.qhp
+qhp.Tulip.namespace     = io.tulip.tulipcore.$TULIP_VERSION_TAG
+qhp.Tulip.virtualFolder = tulipcore
+qhp.Tulip.indexTitle    = Tulip Core
+qhp.Tulip.indexRoot     =
+
+qhp.Tulip.filterAttributes                  = tulipcore $TULIP_VERSION qtrefdoc
+qhp.Tulip.customFilters.Qt.name             = TulipCore $TULIP_VERSION
+qhp.Tulip.customFilters.Qt.filterAttributes = tulipcore $TULIP_VERSION
+
+qhp.Tulip.subprojects = qmltypes classes examples
+qhp.Tulip.subprojects.qmltypes.title = QML Types
+qhp.Tulip.subprojects.qmltypes.indexTitle = Tulip Core QML Types
+qhp.Tulip.subprojects.qmltypes.selectors = qmlclass
+qhp.Tulip.subprojects.qmltypes.sortPages = true
+qhp.Tulip.subprojects.classes.title = C++ Classes
+qhp.Tulip.subprojects.classes.indexTitle = Tulip Core C++ Classes
+qhp.Tulip.subprojects.classes.selectors = class fake:headerfile
+qhp.Tulip.subprojects.classes.sortPages = true
+qhp.Tulip.subprojects.examples.title = Examples
+qhp.Tulip.subprojects.examples.indexTitle = Tulip Core Examples
+qhp.Tulip.subprojects.examples.selectors = fake:example
+
+# Specify the install path under QT_INSTALL_EXAMPLES
+# Note: paths passed to \example command must contain the parent directory, e.g.
+# \example controls/tabs
+#exampledirs += snippets
+
+#examplesinstallpath = tulip
+
+headerdirs += .
+
+sourcedirs += . src
+
+imagedirs += images
+
+navigation.landingpage  = "Tulip Core"
+navigation.qmltypespage = "Tulip Core QML Types"
+navigation.cppclassespage = "Tulip Core C++ Classes"

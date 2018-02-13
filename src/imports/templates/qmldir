@@ -1,0 +1,4 @@
+module Tulip.Templates
+plugin tuliptemplatesplugin
+classname TulipTemplatesPlugin
+typeinfo plugins.qmltypes
