@@ -1,25 +1,14 @@
 Tulip
 =====
 
-[![ZenHub.io](https://img.shields.io/badge/supercharged%20by-zenhub.io-blue.svg)](https://zenhub.io)
 
 [![License](https://img.shields.io/badge/license-MPL2-blue.svg)](https://www.mozilla.org/en-US/MPL/2.0/)
-[![GitHub release](https://img.shields.io/github/release/tulipos/tulip.svg)](https://github.com/tulipos/tulip)
-[![Build Status](https://travis-ci.org/tulipos/tulip.svg?branch=develop)](https://travis-ci.org/tulipos/tulip)
-[![GitHub issues](https://img.shields.io/github/issues/tulipos/tulip.svg)](https://github.com/tulipos/tulip/issues)
 [![Maintained](https://img.shields.io/maintenance/yes/2018.svg)](https://github.com/tulipos/tulip/commits/develop)
 
 Tulip is a collection of cross-platform QtQuick components for building tulip and dynamic applications,
-using the [Material Design](https://material.io/guidelines/) guidelines.
+using custom styling.
 
-Online documentation is available at [tulip.io](https://tulip.io/docs/sdk/tulip/develop/).
-
-We develop using the [git flow](https://danielkummer.github.io/git-flow-cheatsheet/) method
-this means that the `develop` branch contains code that is being developed and might break
-from time to time. If you want to check out a stable version just install one of the
-releases or clone the `master` branch that has the latest released version.
-
-![Desktop](.github/demo.png)
+## ![Desktop](.github/demo.png)
 
 ## Dependencies
 
@@ -71,9 +60,6 @@ To the `qbs` call above you can append additional configuration parameters:
  * `modules.tulipdeployment.qmlDir:path/to/qml` where QML plugins are installed (default: `/usr/local/lib/qml`)
  * `modules.tulipdeployment.pluginsDir:path/to/plugins` where Qt plugins are installed (default: `/usr/local/lib/plugins`)
  * `modules.tulipdeployment.qbsModulesDir:path/to/qbs` where Qbs modules are installed (default: `/usr/local/share/qbs/modules`)
-
-See [tulipdeployment.qbs](https://github.com/tulipos/qbs-shared/blob/develop/modules/tulipdeployment/tulipdeployment.qbs)
-for more deployment-related parameters.
 
 See also [System-wide installation](#system-wide-installation).
 
