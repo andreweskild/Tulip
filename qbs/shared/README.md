@@ -1,12 +1,6 @@
 qbs shared
 ==========
 
-[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![GitHub release](https://img.shields.io/github/release/tulipos/qbs-shared.svg)](https://github.com/tulipos/qbs-shared)
-[![Build Status](https://travis-ci.org/tulipos/qbs-shared.svg?branch=develop)](https://travis-ci.org/tulipos/qbs-shared)
-[![GitHub issues](https://img.shields.io/github/issues/tulipos/qbs-shared.svg)](https://github.com/tulipos/qbs-shared/issues)
-[![Maintained](https://img.shields.io/maintenance/yes/2018.svg)](https://github.com/tulipos/qbs-shared/commits/develop)
-
 Shared imports and modules for projects using the qbs build system.
 
 ## Dependencies

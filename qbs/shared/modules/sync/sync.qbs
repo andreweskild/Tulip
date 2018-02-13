@@ -344,8 +344,8 @@ Module {
             cmd.module = product.moduleProperty("sync", "module");
             cmd.sourceCode = function() {
                 var file = new TextFile(output.filePath, TextFile.WriteOnly);
-                file.writeLine("#ifndef LIRI_" + module.toUpperCase() + "_MODULE_H");
-                file.writeLine("#define LIRI_" + module.toUpperCase() + "_MODULE_H");
+                file.writeLine("#ifndef TULIP_" + module.toUpperCase() + "_MODULE_H");
+                file.writeLine("#define TULIP_" + module.toUpperCase() + "_MODULE_H");
                 if (inputs.hpp_depends)
                     file.writeLine("#include <" + module + '/' + module + "Depends>");
                 var inputHeaders = inputs["hpp_module_input"] || [];

@@ -16,7 +16,7 @@ Probe {
 
     property stringList includePathSuffixes: ["include"]
     property stringList includeNames: []
-    property stringList includeEnvironmentPaths: ["LIRI_INCLUDE_PREFIX"]
+    property stringList includeEnvironmentPaths: ["TULIP_INCLUDE_PREFIX"]
 
     property stringList libraryPathSuffixes: {
         var suffixes = ["lib"];
@@ -29,7 +29,7 @@ Probe {
         return base.concat(suffixes);
     }
     property stringList libraryNames: []
-    property stringList libraryEnvironmentPaths: ["LIRI_LIBRARY_PREFIX"]
+    property stringList libraryEnvironmentPaths: ["TULIP_LIBRARY_PREFIX"]
 
     property string pathListSeparator: qbs.pathListSeparator
 

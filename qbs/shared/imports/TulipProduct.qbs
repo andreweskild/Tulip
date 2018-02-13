@@ -2,8 +2,8 @@ import qbs 1.0
 
 Product {
     property stringList commonCppDefines: []
-    property bool castFromAscii: false
-    property bool castToAscii: false
+    property bool castFromAscii: true
+    property bool castToAscii: true
 
     Depends { name: "cpp" }
 
