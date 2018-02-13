@@ -47,6 +47,9 @@ T.Button {
         id: content
         height: parent.height
         width: parent.width
-        clip: false
+
+        InteractiveRounded {
+            anchors.fill: parent
+        }
 }
 }

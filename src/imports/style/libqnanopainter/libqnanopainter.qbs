@@ -1,8 +1,8 @@
 import qbs
 
-Module {
+Product {
     name: "libqnanopainter"
-    type: "dynamiclibrary"
+    type: "staticlibrary"
     Depends {
         name: "Qt"
         submodules: ["core", "gui", "quick"] // Add more here if needed
@@ -127,5 +127,9 @@ Module {
     }
 
     cpp.defines: ["QNANO_QT_GL_INCLUDE", "QNANO_ENABLE_GLES3"]
-
+    
+    Export {
+            Depends { name: "cpp" }
+            cpp.includePaths: [product.sourceDirectory]
+    }
 }

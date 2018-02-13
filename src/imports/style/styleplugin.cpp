@@ -16,6 +16,7 @@
 #include "styleplugin.h"
 #include "iconthemeimageprovider.h"
 #include "utils.h"
+#include "interactivegradientrectangle.h"
 
 static QObject *colorProvider(QQmlEngine *engine, QJSEngine *jsEngine)
 {
@@ -47,4 +48,5 @@ void TulipStylePlugin::registerTypes(const char *uri)
 
     qmlRegisterSingletonType<Color>(uri, 1, 0, "Color", colorProvider);
     qmlRegisterSingletonType<Utils>(uri, 1, 0, "Utils", utilsProvider);
+    qmlRegisterType<InteractiveGradientRectangle>(uri, 1, 0, "InteractiveGradientRectangle");
 }
