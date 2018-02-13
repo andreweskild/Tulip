@@ -3,12 +3,11 @@ Tulip
 
 
 [![License](https://img.shields.io/badge/license-MPL2-blue.svg)](https://www.mozilla.org/en-US/MPL/2.0/)
-[![Maintained](https://img.shields.io/maintenance/yes/2018.svg)](https://github.com/tulipos/tulip/commits/develop)
+[![Maintained](https://img.shields.io/maintenance/yes/2018.svg)](https://github.com/andreweskild/tulip/commits/develop)
 
 Tulip is a collection of cross-platform QtQuick components for building tulip and dynamic applications,
 using custom styling.
 
-## ![Desktop](.github/demo.png)
 
 ## Dependencies
 
