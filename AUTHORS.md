@@ -1,7 +1,11 @@
 Tulip
 =====
 
-# Core Developers
+# Core Tulip Developers
+
+ * Andrew Eskild Christensen
+
+# Core Fluid Developers
 
  * Pier Luigi Fiorini
 

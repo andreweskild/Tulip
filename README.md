@@ -6,7 +6,7 @@ Tulip
 [![Maintained](https://img.shields.io/maintenance/yes/2018.svg)](https://github.com/andreweskild/tulip/commits/develop)
 
 Tulip is a collection of cross-platform QtQuick components for building tulip and dynamic applications,
-using custom styling.
+using custom styling. Forked from [fluid](https://github.com/lirios/fluid).
 
 
 ## Dependencies
