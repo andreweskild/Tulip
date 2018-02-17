@@ -15,7 +15,6 @@
 
 import QtQuick 2.10
 import QtQuick.Controls 2.3
-import QtQuick.Controls.Material 2.3
 import Tulip.Controls 1.0 as TulipControls
 
 /*!
@@ -154,7 +153,6 @@ Page {
     TulipControls.AppBar {
         id: appBar
 
-        Material.elevation: 0
 
         title: page.title
 

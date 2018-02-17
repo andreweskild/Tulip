@@ -4,6 +4,4 @@ classname TulipStylePlugin
 depends Tulip.Template 1.0
 typeinfo plugins.qmltypes
 
-Button 1.0 Button.qml
-InteractiveRounded 1.0 InteractiveRounded.qml
 InteractiveGradientRectangle 1.0 InteractiveGradientRectangle.qml

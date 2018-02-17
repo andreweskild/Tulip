@@ -33,11 +33,6 @@ Tab {
         padding: 0
         z: 2
 
-        Material.background: "white"
-        Material.elevation: 1
-
-        Universal.background: Universal.accent
-
         ListView {
             id: listView
             anchors.fill: parent

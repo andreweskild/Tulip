@@ -17,6 +17,7 @@
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
 #include <QQmlContext>
+#include <QFont>
 
 #include "iconcategorymodel.h"
 #include "iconnamemodel.h"

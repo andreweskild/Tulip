@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>fonts/IBMPlexSans-Bold.ttf</file>
+        <file>fonts/IBMPlexSans-BoldItalic.ttf</file>
+        <file>fonts/IBMPlexSans-ExtraLight.ttf</file>
+        <file>fonts/IBMPlexSans-ExtraLightItalic.ttf</file>
+        <file>fonts/IBMPlexSans-Italic.ttf</file>
+        <file>fonts/IBMPlexSans-Light.ttf</file>
+        <file>fonts/IBMPlexSans-LightItalic.ttf</file>
+        <file>fonts/IBMPlexSans-Medium.ttf</file>
+        <file>fonts/IBMPlexSans-MediumItalic.ttf</file>
+        <file>fonts/IBMPlexSans-Regular.ttf</file>
+        <file>fonts/IBMPlexSans-SemiBold.ttf</file>
+        <file>fonts/IBMPlexSans-SemiBoldItalic.ttf</file>
+        <file>fonts/IBMPlexSans-Text.ttf</file>
+        <file>fonts/IBMPlexSans-TextItalic.ttf</file>
+        <file>fonts/IBMPlexSans-Thin.ttf</file>
+        <file>fonts/IBMPlexSans-ThinItalic.ttf</file>
+    </qresource>
+</RCC>

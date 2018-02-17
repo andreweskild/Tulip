@@ -21,7 +21,6 @@ import "../.."
 Flickable {
     clip: true
     contentHeight: Math.max(layout.implicitHeight, height)
-
     ScrollBar.vertical: ScrollBar {}
 
     ColumnLayout {
@@ -31,11 +30,12 @@ Flickable {
         Repeater {
             model: 2
 
-            StyledRectangle {
+            Item {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.minimumWidth: grid.width + 80
                 Layout.minimumHeight: grid.height + 80
+
 
                 GridLayout {
                     id: grid

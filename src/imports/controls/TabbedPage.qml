@@ -17,7 +17,6 @@ import QtQuick 2.10
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.3
 import QtQuick.Controls.impl 2.3
-import QtQuick.Controls.Material 2.3
 import Tulip.Controls 1.0 as TulipControls
 
 /*!
@@ -109,8 +108,6 @@ TulipControls.Page {
 
         visible: tabBar.count > 0
 
-        Material.elevation: 2
-
         TabBar {
             id: tabBar
 
@@ -127,9 +124,6 @@ TulipControls.Page {
 
             currentIndex: swipeView.currentIndex
 
-            Material.accent: appBar.Material.foreground
-            Material.background: "transparent"
-
             Repeater {
                 model: swipeView.contentChildren.length
                 delegate: TabButton {
@@ -143,12 +137,6 @@ TulipControls.Page {
                     text: delegateData.title
 
                     width: parent.fixed ? parent.width / parent.count : implicitWidth
-
-                    // Active color
-                    Material.accent: appBar.Material.foreground
-
-                    // Unfocused color
-                    Material.foreground: TulipControls.Color.transparent(appBar.Material.foreground, 0.7)
 
                     contentItem: RowLayout {
                         IconLabel {
@@ -191,6 +179,7 @@ TulipControls.Page {
         id: swipeView
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
+
     }
 
     /*!
