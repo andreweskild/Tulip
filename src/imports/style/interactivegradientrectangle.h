@@ -14,7 +14,7 @@ class InteractiveGradientRectangle : public QNanoQuickItem
     Q_PROPERTY(QColor primaryColor READ primaryColor WRITE setPrimaryColor NOTIFY primaryColorChanged)
     Q_PROPERTY(QColor secondaryColor READ secondaryColor WRITE setSecondaryColor NOTIFY secondaryColorChanged)
     Q_PROPERTY(QColor borderColor READ borderColor WRITE setBorderColor NOTIFY borderColorChanged)
-    Q_PROPERTY(BorderGroup* border MEMBER m_border NOTIFY borderChanged)
+    Q_PROPERTY(int borderWidth READ borderWidth WRITE setBorderWidth NOTIFY borderWidthChanged)
     Q_PROPERTY(int radius MEMBER m_radius NOTIFY radiusChanged)
 public:
     InteractiveGradientRectangle(QQuickItem *p_parent = nullptr);
@@ -28,13 +28,12 @@ public:
     QColor borderColor() const;
     void setBorderColor(const QColor &p_borderColor);
 
+    int borderWidth() const;
+    void setBorderWidth(const int &p_borderWidth);
+
 
     QPointF mousePosition() const;
     void updateMousePosition(const QPointF &p_mousePos);
-
-    BorderGroup *border() {
-        return m_border;
-    }
 
     int radius() {
         return m_radius;
@@ -47,8 +46,8 @@ signals:
     void secondaryColorChanged();
 
     void radiusChanged();
-    void borderChanged();
     void borderColorChanged();
+    void borderWidthChanged();
 
 protected:
     void hoverMoveEvent(QHoverEvent *p_event);
@@ -60,8 +59,8 @@ private:
     QColor m_primaryColor;
     QColor m_secondaryColor;
     QColor m_borderColor;
+    int m_borderWidth;
 
-    BorderGroup *m_border;
     int m_radius;
 
 public slots:

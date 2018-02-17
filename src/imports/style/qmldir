@@ -4,4 +4,4 @@ classname TulipStylePlugin
 depends Tulip.Template 1.0
 typeinfo plugins.qmltypes
 
-InteractiveGradientRectangle 1.0 InteractiveGradientRectangle.qml
+CheckBox 1.0 CheckBox.qml

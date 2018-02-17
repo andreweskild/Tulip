@@ -32,7 +32,7 @@ Flickable {
         Repeater {
             model: 2
 
-            StyledRectangle {
+            Item {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.minimumWidth: grid.width + 80

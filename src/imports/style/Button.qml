@@ -59,7 +59,7 @@ T.Button {
             secondaryColor: ColorPalette.raised
             borderColor: ColorPalette.raisedHighlight
 
-            border.width: 1
+            borderWidth: 1
 
             radius: 3
         }

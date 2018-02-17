@@ -2,7 +2,6 @@
 
 InteractiveGradientRectangle::InteractiveGradientRectangle(QQuickItem *p_parent) : QNanoQuickItem(p_parent)
 {
-    m_border = new BorderGroup(this);
     setAcceptHoverEvents(true);
 }
 
@@ -48,6 +47,20 @@ void InteractiveGradientRectangle::setBorderColor(const QColor &p_borderColor)
     }
 }
 
+int InteractiveGradientRectangle::borderWidth() const
+{
+    return m_borderWidth;
+}
+
+void InteractiveGradientRectangle::setBorderWidth(const int &p_borderWidth)
+{
+    if (m_borderWidth != p_borderWidth)
+    {
+        m_borderWidth = p_borderWidth;
+        update();
+    }
+}
+
 QPointF InteractiveGradientRectangle::mousePosition() const
 {
     return m_mousePos;
@@ -76,14 +89,14 @@ InteractiveGradientPainter::InteractiveGradientPainter()
 
 void InteractiveGradientPainter::paint(QNanoPainter *p)
 {
-//    if (m_borderWidth % 2 == 0)
-//    {
-//        p->setPixelAlign(QNanoPainter::PIXEL_ALIGN_FULL);
-//    }
-//    else
-//    {
+    if (m_borderWidth % 2 == 0)
+    {
+        p->setPixelAlign(QNanoPainter::PIXEL_ALIGN_FULL);
+    }
+    else
+    {
         p->setPixelAlign(QNanoPainter::PIXEL_ALIGN_HALF);
-//    }
+    }
     p->beginPath();
 
     if (m_radius == 0)
@@ -125,7 +138,7 @@ void InteractiveGradientPainter::synchronize(QNanoQuickItem *p_item)
         m_gradient.setCenterPosition(gradientItem->mousePosition());
 
         m_borderColor = QNanoColor::fromQColor(gradientItem->borderColor());
-        m_borderWidth = gradientItem->border()->width();
+        m_borderWidth = gradientItem->borderWidth();
 
         m_radius = gradientItem->radius();
     }
