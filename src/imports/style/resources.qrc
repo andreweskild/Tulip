@@ -16,5 +16,6 @@
         <file>fonts/IBMPlexSans-TextItalic.ttf</file>
         <file>fonts/IBMPlexSans-Thin.ttf</file>
         <file>fonts/IBMPlexSans-ThinItalic.ttf</file>
+        <file>shaders/colorize.frag</file>
     </qresource>
 </RCC>

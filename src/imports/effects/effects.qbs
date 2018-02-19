@@ -15,6 +15,7 @@ Product {
         fileTags: ["qml"]
     }
 
+
     Group {
         qbs.install: true
         qbs.installDir: FileInfo.joinPaths(tulipdeployment.qmlDir, pluginPath)

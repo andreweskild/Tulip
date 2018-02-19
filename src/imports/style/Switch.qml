@@ -36,16 +36,16 @@ T.Switch {
             hovered: control.hovered
         }
 
-        Rectangle {
+        InteractiveGradientRectangle {
             id: buttonBackground
             anchors.fill: parent
 
 
-            color: ColorPalette.raised
-            //secondaryColor: ColorPalette.raised
-            border.color: ColorPalette.raisedHighlight
+            primaryColor: ColorPalette.raised
+            secondaryColor: ColorPalette.raised
+            borderColor: ColorPalette.raisedHighlight
 
-            border.width: 1
+            borderWidth: 1
 
             radius: 3
         }
@@ -139,21 +139,21 @@ T.Switch {
     states: [
         State {
             name: "disabled"; when: !control.enabled
-            PropertyChanges { target: buttonBackground;  color: ColorPalette.sunken}
-//            PropertyChanges { target: buttonBackground;  secondaryColor: ColorPalette.sunken}
-            PropertyChanges { target: buttonBackground;  border.color: ColorPalette.sunkenBorder}
+            PropertyChanges { target: buttonBackground;  primaryColor: ColorPalette.sunken}
+            PropertyChanges { target: buttonBackground;  secondaryColor: ColorPalette.sunken}
+            PropertyChanges { target: buttonBackground;  borderColor: ColorPalette.sunkenBorder}
         },
         State {
             name: "pressed"; when: control.pressed
-            PropertyChanges { target: buttonBackground;  color: ColorPalette.accentDark}
-//            PropertyChanges { target: buttonBackground;  secondaryColor: ColorPalette.accent}
-            PropertyChanges { target: buttonBackground;  border.color: ColorPalette.accentBorder}
+            PropertyChanges { target: buttonBackground;  primaryColor: ColorPalette.accentDark}
+            PropertyChanges { target: buttonBackground;  secondaryColor: ColorPalette.accent}
+            PropertyChanges { target: buttonBackground;  borderColor: ColorPalette.accentBorder}
         },
         State {
             name: "hovered"; when: control.hovered
-            PropertyChanges { target: buttonBackground;  color: ColorPalette.accent}
-//            PropertyChanges { target: buttonBackground;  secondaryColor: ColorPalette.accentLight}
-            PropertyChanges { target: buttonBackground;  border.color: ColorPalette.accentHighlight}
+            PropertyChanges { target: buttonBackground;  primaryColor: ColorPalette.accent}
+            PropertyChanges { target: buttonBackground;  secondaryColor: ColorPalette.accentLight}
+            PropertyChanges { target: buttonBackground;  borderColor: ColorPalette.accentHighlight}
         }
     ]
 

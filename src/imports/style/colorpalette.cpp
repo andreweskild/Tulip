@@ -28,7 +28,7 @@ void ColorPalette::changeToLightTheme()
     m_accent = QColor::fromRgb(255, 207, 35);
     m_accentLight = QColor::fromRgb(255, 246, 59);
     m_accentDark = QColor::fromRgb(245, 186, 23);
-    m_accentHighlight = QColor::fromRgb(255, 246, 59);
+    m_accentHighlight = QColor::fromRgb(255, 227, 121);
     m_accentBorder = QColor::fromRgb(232, 170, 25);
 
     m_content = QColor::fromRgb(101, 93, 109);

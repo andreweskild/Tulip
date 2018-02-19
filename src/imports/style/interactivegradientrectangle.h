@@ -77,6 +77,7 @@ public:
     void synchronize(QNanoQuickItem *p_item);
 
 private:
+    void drawCornerAliasedRoundedRect(QNanoPainter *p);
     QNanoRadialGradient m_gradient;
 
     QNanoColor m_primaryColor;

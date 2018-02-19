@@ -97,34 +97,75 @@ void InteractiveGradientPainter::paint(QNanoPainter *p)
     {
         p->setPixelAlign(QNanoPainter::PIXEL_ALIGN_HALF);
     }
+//    p->setAntialias(1.1);
+
+//    p->beginPath();
+
+//    if (m_radius == 0)
+//    {
+//        p->rect(0, 0, width(), height());
+//    }
+//    else
+//    {
+//        p->roundedRect(0, 0, width() - m_borderWidth,
+//                       height() - m_borderWidth, m_radius);
+//    }
+
+
+
+//    if(width() > height())
+//    {
+//        m_gradient.setOuterRadius(width() * 2);
+//    }
+//    else
+//    {
+//        m_gradient.setOuterRadius(height() * 2);
+//    }
+//    m_gradient.setStartColor(m_primaryColor);
+//    m_gradient.setEndColor(m_secondaryColor);
+//    p->setFillStyle(m_gradient);
+//    p->fill();
+//    p->setStrokeStyle(m_borderColor);
+//    p->setLineWidth(m_borderWidth);
+//    p->stroke();
+    drawCornerAliasedRoundedRect(p);
+}
+
+void InteractiveGradientPainter::drawCornerAliasedRoundedRect(QNanoPainter *p)
+{
+    float adjustedWidth = width() - m_borderWidth;
+    float adjustedHeight = height() - m_borderWidth;
     p->beginPath();
-
-    if (m_radius == 0)
-    {
-        p->rect(0, 0, width(), height());
-    }
-    else
-    {
-        p->roundedRect(m_borderWidth, m_borderWidth, qFloor(width()) - m_borderWidth * 2,
-                       qFloor(height()) - m_borderWidth * 2, m_radius);
-    }
-
-
-
-    if(width() > height())
-    {
-        m_gradient.setOuterRadius(width() * 2);
-    }
-    else
-    {
-        m_gradient.setOuterRadius(height() * 2);
-    }
-    m_gradient.setStartColor(m_primaryColor);
-    m_gradient.setEndColor(m_secondaryColor);
-    p->setFillStyle(m_gradient);
-    p->fill();
+    p->setAntialias(0.0);
+    p->moveTo(m_radius, 0);
+    p->lineTo(adjustedWidth - m_radius, 0);
+    p->moveTo(adjustedWidth, m_radius);
+    p->lineTo(adjustedWidth, adjustedHeight - m_radius);
+    p->moveTo(adjustedWidth - m_radius, adjustedHeight);
+    p->lineTo(m_radius, adjustedHeight);
+    p->moveTo(0, adjustedHeight - m_radius);
+    p->lineTo(0, m_radius);
     p->setStrokeStyle(m_borderColor);
     p->setLineWidth(m_borderWidth);
+    p->stroke();
+
+    p->beginPath();
+    p->setAntialias(1.1);
+    p->moveTo(0, m_radius+1);
+    p->arc(m_radius, m_radius, m_radius, 3.14, 3*3.14/2);
+
+    p->moveTo(adjustedWidth - m_radius - 1, 0);
+    p->arc(adjustedWidth - m_radius, m_radius, m_radius, 3*3.14/2, 2*3.14);
+    p->lineTo(adjustedWidth, m_radius + 1);
+
+    p->moveTo(adjustedWidth, adjustedHeight - m_radius - 1);
+    p->arc(adjustedWidth - m_radius, adjustedHeight - m_radius, m_radius, 2*3.14, 3.14/2);
+    p->lineTo(adjustedWidth - m_radius - 1, adjustedHeight);
+
+    p->moveTo(m_radius + 1, adjustedHeight);
+    p->arc(m_radius, adjustedHeight - m_radius, m_radius, 3.14/2, 3.14);
+    p->lineTo(0, adjustedHeight - m_radius - 1);
+
     p->stroke();
 }
 
