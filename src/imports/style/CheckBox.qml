@@ -8,7 +8,7 @@ T.CheckBox {
     id: control
 
     implicitWidth: 96
-    implicitHeight: 22
+    implicitHeight: 24
 
     spacing: 5
 
@@ -17,11 +17,41 @@ T.CheckBox {
     font.family: "IBM Plex Sans"
 
 
+    background: Item {
+        height: parent.height
+        width: parent.height
+        transform: Translate {
+            y: control.pressed ? 2 : 0
+
+
+            Behavior on y {
+                NumberAnimation {
+                    duration: 100
+                    easing {
+                        type: Easing.InOutSine
+                    }
+                }
+            }
+        }
+
+
+        BoxShadow {
+            anchors.fill: parent
+            hidden: control.pressed || !control.enabled
+            hovered: control.hovered
+        }
+
+        GenericFocusControl {
+            anchors.fill: parent
+            hovered: control.hovered
+            pressed: control.pressed
+        }
+    }
+
 
     indicator: Item {
             height: parent.height
             width: parent.height
-
             transform: Translate {
                 y: control.pressed ? 2 : 0
 
@@ -36,43 +66,26 @@ T.CheckBox {
                 }
             }
 
-            BoxShadow {
+
+            CheckBoxIndicator {
+                id: checkIndicator
                 anchors.fill: parent
-                hidden: control.pressed || !control.enabled
-                hovered: control.hovered
-            }
-
-            InteractiveGradientRectangle {
-                id: background
-                implicitWidth: control.height
-                implicitHeight: control.height
-                primaryColor: ColorPalette.raised
-                secondaryColor: ColorPalette.raised
-                borderColor: ColorPalette.raisedHighlight
-                borderWidth: 1
-
-                radius: 3
+                lineWidth: 3
+                color: ColorPalette.content
+                dashOffset: control.checked ? 0 : 14
 
 
-                CheckBoxIndicator {
-                    id: checkIndicator
-                    anchors.fill: parent
-                    lineWidth: 3
-                    color: ColorPalette.content
-                    dashOffset: control.checked ? 0 : 14
-
-
-                    Behavior on dashOffset {
-                        NumberAnimation {
-                            duration: 150
-                            easing {
-                                type: Easing.InOutCubic
-                            }
+                Behavior on dashOffset {
+                    NumberAnimation {
+                        duration: 150
+                        easing {
+                            type: Easing.InOutCubic
                         }
                     }
                 }
             }
     }
+
 
     contentItem: Text {
         leftPadding: control.indicator && !control.mirrored ? control.indicator.width + control.spacing : 0
@@ -86,25 +99,16 @@ T.CheckBox {
         horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignVCenter
     }
+
+
     states: [
         State {
             name: "disabled"; when: !control.enabled
-            PropertyChanges { target: background;  primaryColor: ColorPalette.sunken}
-            PropertyChanges { target: background;  secondaryColor: ColorPalette.sunken}
-            PropertyChanges { target: background;  borderColor: ColorPalette.sunkenBorder}
+            PropertyChanges { target: checkIndicator;  opacity: 0.5}
+            PropertyChanges { target: contentItem;  opacity: 0.5}
         },
         State {
-            name: "pressed"; when: control.pressed
-            PropertyChanges { target: background;  primaryColor: ColorPalette.accentDark}
-            PropertyChanges { target: background;  secondaryColor: ColorPalette.accent}
-            PropertyChanges { target: background;  borderColor: ColorPalette.accentBorder}
-            PropertyChanges { target: checkIndicator;  color: ColorPalette.contentAccented}
-        },
-        State {
-            name: "hovered"; when: control.hovered
-            PropertyChanges { target: background;  primaryColor: ColorPalette.accent}
-            PropertyChanges { target: background;  secondaryColor: ColorPalette.accentLight}
-            PropertyChanges { target: background;  borderColor: ColorPalette.accentHighlight}
+            name: "active"; when: control.hovered || control.pressed
             PropertyChanges { target: checkIndicator;  color: ColorPalette.contentAccented}
         }
     ]

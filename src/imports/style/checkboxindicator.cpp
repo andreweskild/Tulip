@@ -16,9 +16,9 @@ void CheckBoxIndicator::paint(QPainter *painter)
     if (opacity() > 0)
     {
         QPainterPath checkPath;
-        checkPath.moveTo(width()*.3, height() * .55);
+        checkPath.moveTo(width()*.25, height() * .52);
         checkPath.lineTo(width() * .45, height() * .7);
-        checkPath.lineTo(width()*.75, height() * .4);
+        checkPath.lineTo(width()*.75, height() * .35);
 
         QPen checkPen(QBrush(m_checkColor), m_checkWidth);
         checkPen.setCapStyle(Qt::RoundCap);

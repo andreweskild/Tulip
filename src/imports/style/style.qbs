@@ -17,6 +17,7 @@ TulipQmlPlugin {
 
 
 
+
     Properties {
         condition: qbs.targetOS.contains("osx")
         cpp.linkerFlags: ["-lstdc++"]

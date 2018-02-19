@@ -4,4 +4,5 @@ classname TulipStylePlugin
 depends Tulip.Template 1.0
 typeinfo plugins.qmltypes
 
-CheckBox 1.0 CheckBox.qml
+
+GenericFocusControl 1.0 GenericFocusControl.qml

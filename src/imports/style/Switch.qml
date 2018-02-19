@@ -36,19 +36,12 @@ T.Switch {
             hovered: control.hovered
         }
 
-        InteractiveGradientRectangle {
-            id: buttonBackground
+        GenericFocusControl {
             anchors.fill: parent
-
-
-            primaryColor: ColorPalette.raised
-            secondaryColor: ColorPalette.raised
-            borderColor: ColorPalette.raisedHighlight
-
-            borderWidth: 1
-
-            radius: 3
+            hovered: control.hovered
+            pressed: control.pressed
         }
+
         Behavior on x {
             NumberAnimation {
                 duration: 150
@@ -67,7 +60,6 @@ T.Switch {
 
 
         Rectangle {
-            id: background
             anchors.fill: parent
             color: control.checked ? ColorPalette.sunkenDark : ColorPalette.sunken
             border.color: control.checked ? ColorPalette.sunkenDarkBorder : ColorPalette.sunkenBorder
@@ -100,9 +92,10 @@ T.Switch {
                 width: 2
                 height: 10
                 anchors.centerIn: parent
-                color: control.checked ? ColorPalette.contentSecondary : ColorPalette.content
+                color: ColorPalette.sunken
+                opacity: control.checked ? 1 : 0
                 radius: 2
-                Behavior on color {
+                Behavior on opacity {
                     ColorAnimation {
                         duration: 150
                         easing {
@@ -122,16 +115,12 @@ T.Switch {
                 height: 10
                 anchors.centerIn: parent
                 color: "transparent"
+                opacity: !control.checked ? 1 : 0
                 radius: height * .5
                 border.width: 2
-                border.color: control.checked ? ColorPalette.contentSecondary : ColorPalette.content
-                Behavior on border.color {
-                    ColorAnimation {
-                        duration: 150
-                        easing {
-                            type: Easing.InOutSine
-                        }
-                    }
+                border.color: ColorPalette.sunkenDark
+                Behavior on opacity {
+                    NumberAnimation { duration: 100; easing.type: Easing.InOutSine }
                 }
             }
         }
@@ -139,21 +128,7 @@ T.Switch {
     states: [
         State {
             name: "disabled"; when: !control.enabled
-            PropertyChanges { target: buttonBackground;  primaryColor: ColorPalette.sunken}
-            PropertyChanges { target: buttonBackground;  secondaryColor: ColorPalette.sunken}
-            PropertyChanges { target: buttonBackground;  borderColor: ColorPalette.sunkenBorder}
-        },
-        State {
-            name: "pressed"; when: control.pressed
-            PropertyChanges { target: buttonBackground;  primaryColor: ColorPalette.accentDark}
-            PropertyChanges { target: buttonBackground;  secondaryColor: ColorPalette.accent}
-            PropertyChanges { target: buttonBackground;  borderColor: ColorPalette.accentBorder}
-        },
-        State {
-            name: "hovered"; when: control.hovered
-            PropertyChanges { target: buttonBackground;  primaryColor: ColorPalette.accent}
-            PropertyChanges { target: buttonBackground;  secondaryColor: ColorPalette.accentLight}
-            PropertyChanges { target: buttonBackground;  borderColor: ColorPalette.accentHighlight}
+            PropertyChanges { target: background;  opacity: 0.5}
         }
     ]
 
