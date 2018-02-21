@@ -10,7 +10,7 @@ T.Button {
     id: control
 
     implicitWidth: Math.floor(label.contentWidth) + padding + padding
-    implicitHeight: 24
+    implicitHeight: 20
     padding: 16
     font.pointSize: 10
     font.weight: Font.DemiBold

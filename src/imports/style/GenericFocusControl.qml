@@ -5,7 +5,7 @@ import Tulip.Effects 1.0
 
 Rectangle {
     id: root
-    radius: 3
+    radius: 4
 
     property bool hovered: false
     property bool pressed: false
@@ -48,7 +48,7 @@ Rectangle {
         },
         State {
             name: "disabled"; when: !root.enabled
-            PropertyChanges { target: root; opacity: .5 }
+//            PropertyChanges { target: root; opacity: .5 }
             PropertyChanges { target: root;  color: ColorPalette.sunken}
             PropertyChanges { target: root;  border.color: ColorPalette.sunkenBorder}
         },

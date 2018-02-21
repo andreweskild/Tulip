@@ -8,7 +8,7 @@ T.CheckBox {
     id: control
 
     implicitWidth: 96
-    implicitHeight: 24
+    implicitHeight: 20
 
     spacing: 5
 

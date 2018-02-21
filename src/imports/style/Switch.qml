@@ -6,8 +6,8 @@ import Tulip.Style 1.0
 T.Switch {
     id: control
 
-    implicitWidth: 44
-    implicitHeight: 22
+    implicitWidth: 40
+    implicitHeight: 20
 
     padding: 8
     spacing: 8
@@ -64,7 +64,7 @@ T.Switch {
             color: control.checked ? ColorPalette.sunkenDark : ColorPalette.sunken
             border.color: control.checked ? ColorPalette.sunkenDarkBorder : ColorPalette.sunkenBorder
             border.width: 1
-            radius: 4
+            radius: 5
             Behavior on color {
                 ColorAnimation {
                     duration: 150
@@ -90,7 +90,7 @@ T.Switch {
 
             Rectangle {
                 width: 2
-                height: 10
+                height: 8
                 anchors.centerIn: parent
                 color: ColorPalette.sunken
                 opacity: control.checked ? 1 : 0
@@ -111,8 +111,8 @@ T.Switch {
             anchors.right: parent.right
 
             Rectangle {
-                width: 10
-                height: 10
+                width: 8
+                height: 8
                 anchors.centerIn: parent
                 color: "transparent"
                 opacity: !control.checked ? 1 : 0

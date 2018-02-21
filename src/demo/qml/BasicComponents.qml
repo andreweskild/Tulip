@@ -39,12 +39,22 @@ Tab {
             currentIndex: 0
             model: ListModel {
                 ListElement { title: qsTr("Button"); source: "qrc:/qml/Pages/Basic/ButtonPage.qml" }
+                ListElement { title: qsTr("DelayButton"); source: "qrc:/qml/Pages/Basic/DelayButtonPage.qml" }
+                ListElement { title: qsTr("Dial"); source: "qrc:/qml/Pages/Basic/DialPage.qml" }
+                ListElement { title: qsTr("PageIndicator"); source: "qrc:/qml/Pages/Basic/PageIndicatorPage.qml" }
                 ListElement { title: qsTr("CheckBox"); source: "qrc:/qml/Pages/Basic/CheckBoxPage.qml" }
+                ListElement { title: qsTr("ComboBox"); source: "qrc:/qml/Pages/Basic/ComboBoxPage.qml" }
                 ListElement { title: qsTr("RadioButton"); source: "qrc:/qml/Pages/Basic/RadioButtonPage.qml" }
+                ListElement { title: qsTr("RoundButton"); source: "qrc:/qml/Pages/Basic/RoundButtonPage.qml" }
+                ListElement { title: qsTr("ScrollBar"); source: "qrc:/qml/Pages/Basic/ScrollBarPage.qml" }
                 ListElement { title: qsTr("Switch"); source: "qrc:/qml/Pages/Basic/SwitchPage.qml" }
                 ListElement { title: qsTr("ProgressBar"); source: "qrc:/qml/Pages/Basic/ProgressBarPage.qml" }
                 ListElement { title: qsTr("BusyIndicator"); source: "qrc:/qml/Pages/Basic/BusyIndicatorPage.qml" }
                 ListElement { title: qsTr("Slider"); source: "qrc:/qml/Pages/Basic/SliderPage.qml" }
+                ListElement { title: qsTr("SpinBox"); source: "qrc:/qml/Pages/Basic/SpinBoxPage.qml" }
+                ListElement { title: qsTr("TextArea"); source: "qrc:/qml/Pages/Basic/TextAreaPage.qml" }
+                ListElement { title: qsTr("TextField"); source: "qrc:/qml/Pages/Basic/TextFieldPage.qml" }
+                ListElement { title: qsTr("Tumbler"); source: "qrc:/qml/Pages/Basic/TumblerPage.qml" }
             }
             header: Subheader {
                 text: qsTr("Demos")
