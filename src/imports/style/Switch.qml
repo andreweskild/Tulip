@@ -13,7 +13,7 @@ T.Switch {
     spacing: 8
 
     indicator: Item {
-        x: control.checked ? control.width - width: 0
+        x: control.position * (control.width - width)
         width: control.height
         height: control.height
         transform: Translate {
@@ -41,6 +41,7 @@ T.Switch {
             hovered: control.hovered
             pressed: control.pressed
         }
+
 
         Behavior on x {
             NumberAnimation {
@@ -92,10 +93,9 @@ T.Switch {
                 width: 2
                 height: 8
                 anchors.centerIn: parent
-                color: ColorPalette.sunken
-                opacity: control.checked ? 1 : 0
+                color: control.checked ? ColorPalette.sunken : ColorPalette.sunkenDark
                 radius: 2
-                Behavior on opacity {
+                Behavior on color {
                     ColorAnimation {
                         duration: 150
                         easing {
@@ -115,12 +115,16 @@ T.Switch {
                 height: 8
                 anchors.centerIn: parent
                 color: "transparent"
-                opacity: !control.checked ? 1 : 0
                 radius: height * .5
                 border.width: 2
-                border.color: ColorPalette.sunkenDark
-                Behavior on opacity {
-                    NumberAnimation { duration: 100; easing.type: Easing.InOutSine }
+                border.color: control.checked ? ColorPalette.sunken : ColorPalette.sunkenDark
+                Behavior on color {
+                    ColorAnimation {
+                        duration: 150
+                        easing {
+                            type: Easing.InOutSine
+                        }
+                    }
                 }
             }
         }

@@ -6,7 +6,6 @@ TulipQmlPlugin {
     pluginPath: "Tulip/Style"
 
     Depends { name: "Android.ndk"; condition: qbs.targetOS.contains("android") }
-    Depends { name: "libqnanopainter" }
 
 
     Properties {
@@ -19,6 +18,7 @@ TulipQmlPlugin {
         condition: qbs.targetOS.contains("osx")
         cpp.linkerFlags: ["-lstdc++"]
     }
+
 
     cpp.defines: base.concat(['TULIP_VERSION="' + project.version + '"'])
 

@@ -59,9 +59,11 @@ Flickable {
                 // Row 2
 
                 ComboBox {
+                    model: ["First", "Second", "Third"]
                 }
 
                 ComboBox {
+                    model: ["First", "Second", "Third"]
                     enabled: false
                 }
 

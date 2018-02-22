@@ -1,12 +1,12 @@
 import QtQuick 2.10
-import QtQuick.Templates 2.2 as T
-import QtQuick.Controls 2.2
-import QtQuick.Controls.impl 2.2
-import QtGraphicalEffects 1.0
+import QtQuick.Templates 2.3 as T
+import QtQuick.Controls 2.3
+import QtQuick.Controls.impl 2.3
 import Tulip.Style 1.0
 import Tulip.Effects 1.0
+import QtGraphicalEffects 1.0
 
-T.Button {
+T.DelayButton {
     id: control
 
     implicitWidth: label.contentWidth + padding + padding
@@ -18,7 +18,9 @@ T.Button {
 
 
     transform: Translate {
-        y: control.pressed || control.checked ? 2 : 0
+        y: control.pressed ? 2 : 0
+
+
         Behavior on y {
             NumberAnimation {
                 duration: 100
@@ -26,6 +28,12 @@ T.Button {
                     type: Easing.InOutSine
                 }
             }
+        }
+    }
+
+    transition: Transition {
+        NumberAnimation {
+            duration: control.delay * (control.pressed ? 1.0 - control.progress : 0.3 * control.progress)
         }
     }
 
@@ -41,27 +49,43 @@ T.Button {
 
     background: Item {
         id: content
-        height: parent.height
-        width: parent.width
+        anchors.fill: parent
 
         BoxShadow {
-            id: shadowEffect
             anchors.fill: parent
-            hidden: control.pressed || !control.enabled || control.flat || control.checked
+            hidden: control.pressed || !control.enabled
             hovered: control.hovered
         }
 
         GenericFocusControl {
+            id: background
             anchors.fill: parent
             hovered: control.hovered
             pressed: control.pressed
-            checked: control.checked
-            highlighted: control.highlighted
-            flat: control.flat
+
+            Item {
+                anchors.left: parent.left
+                height: control.height
+                width: control.width * control.progress
+                clip: true
+
+                Rectangle {
+                    anchors.left: parent.left
+                    height: control.height
+                    width: control.width
+                    radius: 4
+                    color: ColorPalette.accentHighlight
+                    border.width: 1
+                    border.color: ColorPalette.accentBorder
+                }
+            }
+
         }
 
-    }
 
+
+
+    }
     states: [
         State {
             name: "disabled"; when: !control.enabled;

@@ -240,10 +240,10 @@ QQC2.ToolBar {
                     delegate: QQC2.MenuItem {
                         id: overflowMenuItem
 
-                        icon.width: appBar.__iconSize
-                        icon.height: appBar.__iconSize
-                        icon.name: appBar.actions[index + appBar.maxActionCount].icon.name
-                        icon.source: appBar.actions[index + appBar.maxActionCount].icon.source
+//                        icon.width: appBar.__iconSize
+//                        icon.height: appBar.__iconSize
+//                        icon.name: appBar.actions[index + appBar.maxActionCount].icon.name
+//                        icon.source: appBar.actions[index + appBar.maxActionCount].icon.source
 
                         Binding {
                             target: overflowMenuItem

@@ -52,6 +52,8 @@ Flickable {
         count: view.count
         currentIndex: view.currentIndex
 
+        interactive: true
+
         anchors.bottom: view.bottom
         anchors.horizontalCenter: parent.horizontalCenter
     }

@@ -40,7 +40,6 @@ Tab {
             model: ListModel {
                 ListElement { title: qsTr("Button"); source: "qrc:/qml/Pages/Basic/ButtonPage.qml" }
                 ListElement { title: qsTr("DelayButton"); source: "qrc:/qml/Pages/Basic/DelayButtonPage.qml" }
-                ListElement { title: qsTr("Dial"); source: "qrc:/qml/Pages/Basic/DialPage.qml" }
                 ListElement { title: qsTr("PageIndicator"); source: "qrc:/qml/Pages/Basic/PageIndicatorPage.qml" }
                 ListElement { title: qsTr("CheckBox"); source: "qrc:/qml/Pages/Basic/CheckBoxPage.qml" }
                 ListElement { title: qsTr("ComboBox"); source: "qrc:/qml/Pages/Basic/ComboBoxPage.qml" }

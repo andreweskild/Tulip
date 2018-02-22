@@ -48,7 +48,6 @@ Rectangle {
         },
         State {
             name: "disabled"; when: !root.enabled
-//            PropertyChanges { target: root; opacity: .5 }
             PropertyChanges { target: root;  color: ColorPalette.sunken}
             PropertyChanges { target: root;  border.color: ColorPalette.sunkenBorder}
         },

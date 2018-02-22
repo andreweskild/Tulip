@@ -16,11 +16,10 @@
 #include "styleplugin.h"
 #include "iconthemeimageprovider.h"
 #include "utils.h"
-#include "interactivegradientrectangle.h"
-#include "interactivegradientcircle.h"
 #include "bordergroup.h"
 #include "checkboxindicator.h"
 #include "busyindicatorarc.h"
+#include "linearrowindicator.h"
 #include <QFontDatabase>
 
 static QObject *colorProvider(QQmlEngine *engine, QJSEngine *jsEngine)
@@ -69,9 +68,8 @@ void TulipStylePlugin::registerTypes(const char *uri)
 
     qmlRegisterSingletonType<ColorPalette>(uri, 1, 0, "ColorPalette", colorProvider);
     qmlRegisterSingletonType<Utils>(uri, 1, 0, "Utils", utilsProvider);
-    qmlRegisterType<InteractiveGradientRectangle>(uri, 1, 0, "InteractiveGradientRectangle");
-    qmlRegisterType<InteractiveGradientCircle>(uri, 1, 0, "InteractiveGradientCircle");
     qmlRegisterType<BorderGroup>(uri, 1, 0, "BorderGroup");
     qmlRegisterType<CheckBoxIndicator>(uri, 1, 0, "CheckBoxIndicator");
     qmlRegisterType<BusyIndicatorArc>(uri, 1, 0, "BusyIndicatorArc");
+    qmlRegisterType<LineArrowIndicator>(uri, 1, 0, "LineArrowIndicator");
 }

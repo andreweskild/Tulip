@@ -1,24 +1,24 @@
 import QtQuick 2.10
-import QtQuick.Templates 2.2 as T
-import QtQuick.Controls 2.2
-import QtQuick.Controls.impl 2.2
-import QtGraphicalEffects 1.0
+import QtQuick.Templates 2.3 as T
+import QtQuick.Controls 2.3
+import QtQuick.Controls.impl 2.3
 import Tulip.Style 1.0
 import Tulip.Effects 1.0
 
-T.Button {
+T.RoundButton {
     id: control
 
-    implicitWidth: label.contentWidth + padding + padding
-    implicitHeight: 20
-    padding: 16
+    property bool dangerous: false
+    implicitWidth: 20 + 2
+    implicitHeight: 20 + 2
     font.pointSize: 10
     font.weight: Font.DemiBold
     font.family: "IBM Plex Sans"
 
-
     transform: Translate {
-        y: control.pressed || control.checked ? 2 : 0
+        y: control.pressed ? 2 : 0
+
+
         Behavior on y {
             NumberAnimation {
                 duration: 100
@@ -29,39 +29,35 @@ T.Button {
         }
     }
 
-    contentItem: Label {
+    contentItem: Text {
         id: label
-        anchors.fill: parent
+        anchors.centerIn: parent
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        color: ColorPalette.content
         text: control.text
         font: control.font
+
     }
 
     background: Item {
         id: content
-        height: parent.height
-        width: parent.width
+        anchors.fill: parent
 
         BoxShadow {
-            id: shadowEffect
             anchors.fill: parent
-            hidden: control.pressed || !control.enabled || control.flat || control.checked
+            hidden: control.pressed || !control.enabled
             hovered: control.hovered
+            radius: parent.height * .5
         }
 
         GenericFocusControl {
+            id: background
             anchors.fill: parent
-            hovered: control.hovered
             pressed: control.pressed
-            checked: control.checked
-            highlighted: control.highlighted
-            flat: control.flat
+            hovered: control.hovered
+            radius: width * .5
         }
-
     }
-
     states: [
         State {
             name: "disabled"; when: !control.enabled;
