@@ -19,7 +19,6 @@ TulipQmlPlugin {
         cpp.linkerFlags: ["-lstdc++"]
     }
 
-
     cpp.defines: base.concat(['TULIP_VERSION="' + project.version + '"'])
 
 
