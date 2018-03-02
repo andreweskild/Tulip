@@ -9,8 +9,8 @@ T.RoundButton {
     id: control
 
     property bool dangerous: false
-    implicitWidth: 20 + 2
-    implicitHeight: 20 + 2
+    implicitWidth: 22
+    implicitHeight: 22
     font.pointSize: 10
     font.weight: Font.DemiBold
     font.family: "IBM Plex Sans"

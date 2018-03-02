@@ -26,7 +26,7 @@ void ColorPalette::updateTheme()
 void ColorPalette::changeToLightTheme()
 {
     m_accent = QColor::fromRgb(255, 207, 35);
-    m_accentLight = QColor::fromRgb(255, 246, 59);
+    m_accentLight = QColor::fromRgb(255, 238, 153);
     m_accentDark = QColor::fromRgb(245, 186, 23);
     m_accentHighlight = QColor::fromRgb(255, 227, 121);
     m_accentBorder = QColor::fromRgb(232, 170, 25);
@@ -41,13 +41,14 @@ void ColorPalette::changeToLightTheme()
     m_sunken = QColor::fromRgb(217, 214, 220);
     m_sunkenBorder = QColor::fromRgb(204, 200, 208);
 
-    m_sunkenDark = QColor::fromRgb(101, 93, 109);
-    m_sunkenDarkBorder = QColor::fromRgb(52, 48, 56);
+    m_sunkenDark = QColor::fromRgb(152, 144, 160);
+    m_sunkenDarkBorder = QColor::fromRgb(103, 95, 110);
 
-    m_raised = QColor::fromRgb(243, 243, 244);
+    m_raised = QColor::fromRgb(244, 243, 244);
     m_raisedHighlight = QColor::fromRgb(254, 254, 255);
+    m_raisedBorder = QColor::fromRgb(204, 200, 208);
 
-    m_shadow = QColor(0, 0, 0, 40);
+    m_shadow = QColor(0, 0, 0, 30);
 }
 
 void ColorPalette::changeToDarkTheme()
@@ -100,6 +101,10 @@ QColor ColorPalette::raised() const
 QColor ColorPalette::raisedHighlight() const
 {
     return m_raisedHighlight;
+}
+QColor ColorPalette::raisedBorder() const
+{
+    return m_raisedBorder;
 }
 
 // Window Color Group

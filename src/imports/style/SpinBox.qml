@@ -41,13 +41,24 @@ T.SpinBox {
             }
         }
 
-        GenericFocusControl {
+        Rectangle {
+            id: inputBG
             height: parent.height
             width: parent.width + 4
             anchors.centerIn: parent
-            hovered: control.hovered && !control.up.hovered &&
-                     !control.down.hovered && !input.activeFocus
-            radius: 0
+
+            color: ColorPalette.raised
+
+            border.color: ColorPalette.raisedHighlight
+            border.width: 1
+            FocusGradient {
+                id: gradientRect
+                anchors.fill: parent
+                radius: parent.radius
+                opacity: 0
+                primaryColor: ColorPalette.accent
+                secondaryColor: ColorPalette.accentLight
+            }
         }
 
 
@@ -176,6 +187,13 @@ T.SpinBox {
             PropertyChanges { target: minusSymbol;  opacity: 0.5}
             PropertyChanges { target: plusSymbolH;  opacity: 0.5}
             PropertyChanges { target: plusSymbolV;  opacity: 0.5}
+            PropertyChanges { target: inputBG;  color: ColorPalette.sunken}
+            PropertyChanges { target: inputBG;  border.color: ColorPalette.sunkenBorder}
+        },
+        State {
+            name: "input-active"; when: input.activeFocus
+            PropertyChanges { target: inputBG;  color: ColorPalette.raised}
+            PropertyChanges { target: inputBG;  border.color: ColorPalette.accent}
         },
         State {
             name: "up-active"; when: control.up.hovered || control.up.pressed
@@ -187,9 +205,13 @@ T.SpinBox {
             PropertyChanges { target: minusSymbol;  color: ColorPalette.contentAccented}
         },
         State {
-            name: "input-active"; when: control.hovered && !input.activeFocus
+            name: "input-hovered"; when: control.hovered && !input.activeFocus
             PropertyChanges { target: input;  color: ColorPalette.contentAccented}
+            PropertyChanges { target: inputBG;  color: ColorPalette.accent}
+            PropertyChanges { target: inputBG;  border.color: ColorPalette.accentHighlight}
+            PropertyChanges { target: gradientRect;  opacity: 1}
         }
+
     ]
 
     transitions: [

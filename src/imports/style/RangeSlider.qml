@@ -88,12 +88,12 @@ T.RangeSlider {
     background: Rectangle {
         anchors.verticalCenterOffset: 2
         anchors.centerIn: parent
-        width: orientation === Qt.Vertical ? 12 : control.width
-        height: orientation === Qt.Vertical ? control.height : 12
+        width: orientation === Qt.Vertical ? 8 : control.width
+        height: orientation === Qt.Vertical ? control.height : 8
         color: ColorPalette.sunken
         border.color: ColorPalette.sunkenBorder
         border.width: 1
-        radius: 6
+        radius: 4
 
         Rectangle {
             x: orientation === Qt.Vertical ? 0 :

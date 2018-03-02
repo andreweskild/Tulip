@@ -43,7 +43,6 @@ Label {
     */
     property int level: 1
 
-    font.pixelSize: TulipCore.Device.isMobile ? 16 : 15
     lineHeight: level <= 1 ? 24.0 : 28.0
     lineHeightMode: Text.FixedHeight
 

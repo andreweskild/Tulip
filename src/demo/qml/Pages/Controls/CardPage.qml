@@ -21,7 +21,10 @@ Item {
         id: card
         anchors.centerIn: parent
         width: 400
-        height: 400
+        height: picture.height + column.height + column.anchors.margins + topPadding + bottomPadding
+
+        topPadding: 8
+        bottomPadding: 8
 
         Image {
             id: picture
@@ -30,6 +33,7 @@ Item {
                 top: parent.top
                 right: parent.right
             }
+
             height: 200
             source: "https://www.nps.gov/yose/planyourvisit/images/glacier-point-people-960web.jpg"
 

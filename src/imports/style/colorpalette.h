@@ -31,6 +31,7 @@ class ColorPalette : public QObject
 
     Q_PROPERTY(QColor raised READ raised NOTIFY themeChanged)
     Q_PROPERTY(QColor raisedHighlight READ raisedHighlight NOTIFY themeChanged)
+    Q_PROPERTY(QColor raisedBorder READ raisedBorder NOTIFY themeChanged)
 
     Q_PROPERTY(QColor shadow READ shadow NOTIFY themeChanged)
 
@@ -67,6 +68,7 @@ public:
 
     QColor raised() const;
     QColor raisedHighlight() const;
+    QColor raisedBorder() const;
 
     QColor shadow() const;
 
@@ -101,6 +103,7 @@ private:
 
     QColor m_raised;
     QColor m_raisedHighlight;
+    QColor m_raisedBorder;
 
     QColor m_shadow;
 };

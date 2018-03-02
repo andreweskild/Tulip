@@ -17,9 +17,9 @@ import QtQuick 2.10
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.3
 import QtQuick.Controls.impl 2.3
-import QtQuick.Controls.Material 2.3
 import Tulip.Core 1.0 as TulipCore
 import Tulip.Controls 1.0 as TulipControls
+import Tulip.Style 1.0
 
 /*!
    \qmltype ListItem
@@ -97,9 +97,9 @@ ItemDelegate {
     */
     readonly property bool __isIconEmpty: listItem.icon.name === "" && listItem.icon.source.toString() === ""
 
-    icon.width: 24
-    icon.height: 24
-    icon.color: listItem.highlighted ? listItem.Material.primaryColor : enabled ? listItem.Material.iconColor : listItem.Material.iconDisabledColor
+    icon.width: 20
+    icon.height: 20
+    icon.color: "red"
 
     leftPadding: TulipControls.Units.smallSpacing * 2
     rightPadding: TulipControls.Units.smallSpacing * 2
@@ -138,7 +138,7 @@ ItemDelegate {
                 if (secondaryItem.showing)
                     height = secondaryItem.childrenRect.height + (label.visible ? TulipControls.Units.largeSpacing * 2 : TulipControls.Units.smallSpacing * 2);
                 else
-                    height = 48;
+                    height = 20;
             }
 
             var leftHeight = leftItem.childrenRect.height + TulipControls.Units.smallSpacing * 2;
@@ -147,7 +147,7 @@ ItemDelegate {
             return Math.max(height, leftHeight, rightHeight);
         }
 
-        spacing: TulipControls.Units.smallSpacing * 2
+//        spacing: TulipControls.Units.smallSpacing * 2
 
         Item {
             id: leftItem
@@ -156,7 +156,7 @@ ItemDelegate {
 
             objectName: "leftItem"
 
-            Layout.preferredWidth: showing ? 40 : 0
+            Layout.preferredWidth: showing ? 20 : 0
             Layout.preferredHeight: width
             Layout.alignment: Qt.AlignCenter
 
@@ -168,12 +168,12 @@ ItemDelegate {
                     left: parent.left
                 }
 
-                spacing: 16
+                spacing: 4
                 mirrored: listItem.mirrored
                 display: IconLabel.IconOnly
 
                 icon: listItem.icon
-                color: listItem.enabled ? listItem.Material.foreground : listItem.Material.hintTextColor
+                color: "green"
                 visible: !listItem.__isIconEmpty
             }
         }
@@ -189,7 +189,7 @@ ItemDelegate {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
 
                 visible: label.text != "" || valueLabel.text != ""
-                spacing: TulipControls.Units.smallSpacing
+//                spacing: TulipControls.Units.smallSpacing
 
                 TulipControls.SubheadingLabel {
                     id: label
@@ -199,12 +199,12 @@ ItemDelegate {
                     Layout.fillWidth: true
 
                     // XXX: Hack to vertically center the label
-                    Layout.topMargin: subLabel.visible ? 0 : ((listItem.height - height) / 2) - TulipControls.Units.smallSpacing
+                    //Layout.topMargin: subLabel.visible ? 0 : ((listItem.height - height) / 2)
 
+                    verticalAlignment: Text.AlignVCenter
                     text: listItem.text
                     elide: Text.ElideRight
-                    color: listItem.highlighted ? Material.primaryColor
-                                                : Material.primaryTextColor
+                    color: ColorPalette.content
                     visible: text != ""
                 }
 
@@ -216,7 +216,7 @@ ItemDelegate {
                     Layout.preferredWidth: visible ? implicitWidth : 0
                     Layout.preferredHeight: visible ? implicitHeight : 0
 
-                    color: Material.secondaryTextColor
+                    color: "white"
                     elide: Text.ElideRight
 
                     visible: text != ""
@@ -230,7 +230,7 @@ ItemDelegate {
                 Layout.fillWidth: true
                 Layout.preferredHeight: visible ? implicitHeight * maximumLineCount/lineCount : 0
 
-                color: Material.secondaryTextColor
+                color: "orange"
                 elide: Text.ElideRight
                 wrapMode: Text.WordWrap
 

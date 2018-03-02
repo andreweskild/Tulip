@@ -48,10 +48,10 @@ T.Slider {
 
     background: Rectangle {
         anchors.centerIn: parent
-        width: orientation === Qt.Vertical ? 12 : control.width
-        height: orientation === Qt.Vertical ? control.height : 12
+        width: orientation === Qt.Vertical ? 8 : control.width
+        height: orientation === Qt.Vertical ? control.height : 8
         color: ColorPalette.sunken
-        radius: 6
+        radius: 4
         border.color: ColorPalette.sunkenBorder
         border.width: 1
 

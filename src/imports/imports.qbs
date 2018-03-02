@@ -10,8 +10,6 @@ Project {
         "effects/effects.qbs",
         "layouts/layouts.qbs",
         "templates/templates.qbs",
-        "style/style.qbs",
-        "animations/animations.qbs",
-        "style/libqnanopainter/libqnanopainter.qbs"
+        "style/style.qbs"
     ]
 }

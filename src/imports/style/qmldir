@@ -6,3 +6,4 @@ typeinfo plugins.qmltypes
 
 
 GenericFocusControl 1.0 GenericFocusControl.qml
+CursorDelegate 1.0 CursorDelegate.qml

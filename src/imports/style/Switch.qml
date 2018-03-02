@@ -19,13 +19,20 @@ T.Switch {
         transform: Translate {
             y: control.pressed || !control.enabled ? 2 : 0
 
-
             Behavior on y {
                 NumberAnimation {
                     duration: 100
                     easing {
                         type: Easing.InOutSine
                     }
+                }
+            }
+        }
+        Behavior on width {
+            NumberAnimation {
+                duration: 100
+                easing {
+                    type: Easing.InOutSine
                 }
             }
         }

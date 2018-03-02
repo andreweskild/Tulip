@@ -29,7 +29,5 @@ import QtQuick.Controls.Material 2.3
 */
 C.Pane {
     padding: 0
-
-    Material.background: "white"
-    Material.elevation: 1
+    radius: 4
 }

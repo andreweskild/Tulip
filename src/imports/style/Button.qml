@@ -48,7 +48,7 @@ T.Button {
             id: shadowEffect
             anchors.fill: parent
             hidden: control.pressed || !control.enabled || control.flat || control.checked
-            hovered: control.hovered
+            hovered: control.hovered || control.highlighted
         }
 
         GenericFocusControl {

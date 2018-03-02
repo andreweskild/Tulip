@@ -6,15 +6,24 @@ T.ProgressBar {
     id: control
 
     implicitWidth: 120
-    implicitHeight: 12
+    implicitHeight: 8
 
 
     background: Rectangle {
-        anchors.fill: parent
-        color: ColorPalette.sunken
-        border.color: ColorPalette.sunkenBorder
-        border.width: 1
-        radius: 6
+        anchors.centerIn: parent
+        height: control.height + 2
+        width: control.width + 2
+        color: ColorPalette.windowHighlight
+        radius: 4
+        Rectangle {
+            anchors.centerIn: parent
+            height: parent.height - 2
+            width: parent.width - 2
+            color: ColorPalette.sunken
+            border.color: ColorPalette.sunkenBorder
+            border.width: 1
+            radius: parent.radius
+        }
     }
 
     contentItem: Item {
@@ -24,7 +33,7 @@ T.ProgressBar {
             visible: !control.indeterminate
             width: control.visualPosition * parent.width
             height: parent.height
-            radius: 6
+            radius: background.radius
             color: ColorPalette.sunkenDark
             border.color: ColorPalette.sunkenDarkBorder
             border.width: 1
@@ -35,7 +44,7 @@ T.ProgressBar {
             visible: control.indeterminate
             width: control.width * .2
             height: parent.height
-            radius: 6
+            radius: background.radius
             color: ColorPalette.sunkenDark
             border.color: ColorPalette.sunkenDarkBorder
             border.width: 1

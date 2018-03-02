@@ -13,17 +13,28 @@ Rectangle {
     property bool highlighted: false
     property bool flat: false
 
-    color: ColorPalette.raised
+    color: ColorPalette.raisedBorder
 
-    border.color: ColorPalette.raisedHighlight
-    border.width: 1
-    FocusGradient {
-        id: gradientRect
-        anchors.fill: parent
+
+    Rectangle {
+        id: control
+        width: parent.width - 2
+        height: parent.height - 2
+        anchors.centerIn: parent
+        color: ColorPalette.raised
         radius: parent.radius
-        opacity: 0
-        primaryColor: ColorPalette.accent
-        secondaryColor: ColorPalette.accentLight
+
+        border.color: ColorPalette.raisedHighlight
+        border.width: 1
+
+        FocusGradient {
+            id: gradientRect
+            anchors.fill: parent
+            radius: parent.radius
+            opacity: 0
+            primaryColor: ColorPalette.accent
+            secondaryColor: ColorPalette.accentLight
+        }
     }
     states: [
         State {
@@ -48,18 +59,21 @@ Rectangle {
         },
         State {
             name: "disabled"; when: !root.enabled
-            PropertyChanges { target: root;  color: ColorPalette.sunken}
-            PropertyChanges { target: root;  border.color: ColorPalette.sunkenBorder}
+            PropertyChanges { target: control;  color: ColorPalette.sunken}
+            PropertyChanges { target: control;  border.color: ColorPalette.sunken}
+            PropertyChanges { target: root;  color: ColorPalette.sunkenBorder}
         },
         State {
             name: "pressed"; when: root.pressed || root.checked
-            PropertyChanges { target: root;  color: ColorPalette.accentDark}
-            PropertyChanges { target: root;  border.color: ColorPalette.accentBorder}
+            PropertyChanges { target: control;  color: ColorPalette.accentDark}
+            PropertyChanges { target: control;  border.color: ColorPalette.accentDark}
+            PropertyChanges { target: root;  color: ColorPalette.accentBorder}
         },
         State {
             name: "hovered"; when: root.hovered || root.highlighted
-            PropertyChanges { target: root;  color: ColorPalette.accent}
-            PropertyChanges { target: root;  border.color: ColorPalette.accentHighlight}
+            PropertyChanges { target: control;  color: ColorPalette.accent}
+            PropertyChanges { target: control;  border.color: ColorPalette.accentHighlight}
+            PropertyChanges { target: root;  color: ColorPalette.accentBorder}
             PropertyChanges { target: gradientRect;  opacity: 1}
         }
     ]

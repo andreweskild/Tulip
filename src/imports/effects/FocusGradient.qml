@@ -10,8 +10,8 @@ Rectangle {
     layer.effect: RadialGradient {
         anchors.fill: parent
         anchors.margins: root.border.width
-        horizontalRadius: width * 2
-        verticalRadius: width * 2
+        horizontalRadius: width * 1.5
+        verticalRadius: width * 1.5
         cached: true
         horizontalOffset: hoverMouse.mouseX - width * .5
         verticalOffset: hoverMouse.mouseY - height * .5

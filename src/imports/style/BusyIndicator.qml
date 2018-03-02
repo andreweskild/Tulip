@@ -12,7 +12,7 @@ T.BusyIndicator {
         BusyIndicatorArc {
             id: indicatorBorder
             anchors.fill: parent
-            color: ColorPalette.sunkenDark
+            color: ColorPalette.sunkenDarkBorder
             arcWidth: 10
 
             SequentialAnimation {
@@ -108,6 +108,15 @@ T.BusyIndicator {
 
     background: Item {
         anchors.fill: parent
+        Rectangle {
+            height: parent.height + 2
+            width: parent.width + 2
+            anchors.centerIn: parent
+            color: "transparent"
+            border.color: ColorPalette.windowHighlight
+            border.width: indicator.arcWidth + 4
+            radius: width * .5
+        }
         Rectangle {
             anchors.fill: parent
             color: "transparent"

@@ -40,7 +40,7 @@ Item {
         elements. It can be used as margin around button box and
         spacing between buttons.
     */
-    readonly property real smallSpacing: 8
+    readonly property real smallSpacing: 4
 
     /*!
         \qmlproperty real mediumSpacing
@@ -48,7 +48,7 @@ Item {
         The amount of spacing that should be used inside medium UI
         elements such as padding between title and body text in a dialog box.
     */
-    readonly property real mediumSpacing: 20
+    readonly property real mediumSpacing: 8
 
     /*!
         \qmlproperty real largeSpacing
@@ -56,7 +56,7 @@ Item {
         The amount of spacing that should be used inside bigger UI
         elements such as padding in a dialog box.
     */
-    readonly property real largeSpacing: 24
+    readonly property real largeSpacing: 12
 
     /*!
         \qmlproperty int shortDuration

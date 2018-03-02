@@ -26,6 +26,7 @@ Page {
             ListElement { title: "List Item 3"; source: "qrc:/qml/Pages/Controls/SubPage.qml" }
             ListElement { title: "List Item 4"; source: "qrc:/qml/Pages/Controls/SubPage.qml" }
             ListElement { title: "List Item 5"; source: "qrc:/qml/Pages/Controls/SubPage.qml" }
+            ListElement { enabled: false; title: "Disabled List Item"; source: "qrc:/qml/Pages/Controls/SubPage.qml" }
         }
         header: Subheader {
             text: "Header"

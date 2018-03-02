@@ -14,6 +14,9 @@ TulipQmlPlugin {
         Android.ndk.appStl: "gnustl_shared"
     }
 
+
+
+
     Properties {
         condition: qbs.targetOS.contains("osx")
         cpp.linkerFlags: ["-lstdc++"]
@@ -21,11 +24,11 @@ TulipQmlPlugin {
 
     cpp.defines: base.concat(['TULIP_VERSION="' + project.version + '"'])
 
-
     Group {
         name: "QML"
         files: ["qmldir", "*.qml", "*.qmltypes"]
     }
+
 
     Group {
         name: "Sources"
