@@ -16,6 +16,10 @@ T.Button {
     font.weight: Font.DemiBold
     font.family: "IBM Plex Sans"
 
+    onClicked: {
+        clickAnimation.start();
+    }
+
 
     transform: Translate {
         y: control.pressed || control.checked ? 2 : 0
@@ -51,6 +55,47 @@ T.Button {
             hovered: control.hovered || control.highlighted
         }
 
+        Rectangle {
+            id: clickEffect
+            height: parent.height
+            width: parent.width
+            anchors.centerIn: parent
+            color: ColorPalette.accentBorder
+            radius: 6
+            opacity: 0
+            visible: !control.flat
+
+            ParallelAnimation {
+                id: clickAnimation
+                running: false
+
+                NumberAnimation {
+                    target: clickEffect
+                    property: "height"
+                    duration: 200
+                    from: content.height
+                    to: content.height + 6
+                    easing.type: Easing.InOutSine
+                }
+                NumberAnimation {
+                    target: clickEffect
+                    property: "width"
+                    duration: 200
+                    from: content.width
+                    to: content.width + 6
+                    easing.type: Easing.InOutSine
+                }
+                NumberAnimation {
+                    target: clickEffect
+                    property: "opacity"
+                    duration: 400
+                    from: 1
+                    to: 0
+                    easing.type: Easing.InOutSine
+                }
+            }
+
+        }
         GenericFocusControl {
             anchors.fill: parent
             hovered: control.hovered

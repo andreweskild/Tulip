@@ -6,7 +6,7 @@ import Tulip.Style 1.0
 T.Switch {
     id: control
 
-    implicitWidth: 40
+    implicitWidth: 50
     implicitHeight: 20
 
     padding: 8
@@ -14,7 +14,7 @@ T.Switch {
 
     indicator: Item {
         x: control.position * (control.width - width)
-        width: control.height
+        width: 30
         height: control.height
         transform: Translate {
             y: control.pressed || !control.enabled ? 2 : 0
@@ -66,13 +66,20 @@ T.Switch {
         height: parent.height
         y: 2
 
-
         Rectangle {
             anchors.fill: parent
-            color: control.checked ? ColorPalette.sunkenDark : ColorPalette.sunken
-            border.color: control.checked ? ColorPalette.sunkenDarkBorder : ColorPalette.sunkenBorder
+            color: ColorPalette.windowHighlight
+            radius: 4
+        }
+
+        Rectangle {
+            height: parent.height - 2
+            width: parent.width - 2
+            anchors.centerIn: parent
+            color: control.visualPosition > .5 ? ColorPalette.sunkenDark : ColorPalette.sunken
+            border.color: control.visualPosition > .5 ? ColorPalette.sunkenDarkBorder : ColorPalette.sunkenBorder
             border.width: 1
-            radius: 5
+            radius: 4
             Behavior on color {
                 ColorAnimation {
                     duration: 150
@@ -93,14 +100,14 @@ T.Switch {
 
         Item {
             height: parent.height
-            width: parent.width * .5
+            width: parent.height
             anchors.left: parent.left
 
             Rectangle {
                 width: 2
                 height: 8
                 anchors.centerIn: parent
-                color: control.checked ? ColorPalette.sunken : ColorPalette.sunkenDark
+                color: control.visualPosition > .5 ? ColorPalette.contentSecondary : ColorPalette.content
                 radius: 2
                 Behavior on color {
                     ColorAnimation {
@@ -114,7 +121,7 @@ T.Switch {
         }
         Item {
             height: parent.height
-            width: parent.width * .5
+            width: parent.height
             anchors.right: parent.right
 
             Rectangle {
@@ -124,7 +131,7 @@ T.Switch {
                 color: "transparent"
                 radius: height * .5
                 border.width: 2
-                border.color: control.checked ? ColorPalette.sunken : ColorPalette.sunkenDark
+                border.color: control.visualPosition > .5 ? ColorPalette.contentSecondary : ColorPalette.content
                 Behavior on color {
                     ColorAnimation {
                         duration: 150

@@ -5,8 +5,8 @@ import Tulip.Style 1.0
 T.BusyIndicator {
     id: control
 
-    implicitWidth: 32
-    implicitHeight: 32
+    implicitWidth: 40
+    implicitHeight: 40
 
     contentItem: Item {
         BusyIndicatorArc {

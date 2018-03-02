@@ -43,11 +43,12 @@ T.TextField {
         }
 
         Rectangle {
-            id: clickEffect
-            radius: 4
-            height: inputBG.height
-            width: inputBG.width
+            id: focusEffect
+            height: parent.height
+            width: parent.width
             anchors.centerIn: parent
+            color: ColorPalette.accent
+            radius: 6
             opacity: 0
         }
 
@@ -57,7 +58,7 @@ T.TextField {
             width: parent.width - 2
             anchors.centerIn: parent
             color: ColorPalette.raised
-            border.color: ColorPalette.sunkenBorder
+            border.color: ColorPalette.raisedBorder
             border.width: 1
             radius: 4
 
@@ -94,11 +95,14 @@ T.TextField {
             PropertyChanges { target: inputBG;  border.color: ColorPalette.sunkenBorder}
         },
         State {
-            name: "hovered"; when: control.hovered
-            PropertyChanges { target: inputBG;  color: ColorPalette.raisedHighlight}
+            name: "active"; when: control.activeFocus
+            PropertyChanges { target: inputBG;  border.color: ColorPalette.accentBorder}
+            PropertyChanges { target: focusEffect;  height: background.height + 4}
+            PropertyChanges { target: focusEffect;  width: background.width + 4}
+            PropertyChanges { target: focusEffect;  opacity: 1}
         },
         State {
-            name: "active"; when: control.activeFocus
+            name: "hovered"; when: control.hovered
             PropertyChanges { target: inputBG;  border.color: ColorPalette.accentBorder}
         }
     ]
@@ -107,7 +111,9 @@ T.TextField {
         Transition {
             reversible: true
             ColorAnimation { duration: 150; easing.type: Easing.InOutSine }
-            NumberAnimation { properties: "opacity"; duration: 100; easing.type: Easing.InOutSine }
+            NumberAnimation { properties: "opacity"; duration: 200; easing.type: Easing.InOutSine }
+            NumberAnimation { properties: "height"; duration: 200; easing.type: Easing.InOutSine }
+            NumberAnimation { properties: "width"; duration: 200; easing.type: Easing.InOutSine }
         }
     ]
 }
