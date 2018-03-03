@@ -3,4 +3,5 @@ typeinfo plugins.qmltypes
 
 BoxShadow 1.0 BoxShadow.qml
 CircleMask 1.0 CircleMask.qml
+ClickEffect 1.0 ClickEffect.qml
 FocusGradient 1.0 FocusGradient.qml

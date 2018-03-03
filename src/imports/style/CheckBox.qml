@@ -16,6 +16,10 @@ T.CheckBox {
     font.weight: Font.DemiBold
     font.family: "IBM Plex Sans"
 
+    onClicked: {
+        clickEffect.show();
+    }
+
 
     background: Item {
         height: parent.height
@@ -39,6 +43,13 @@ T.CheckBox {
             anchors.fill: parent
             hidden: control.pressed || !control.enabled
             hovered: control.hovered
+        }
+
+        ClickEffect {
+            id: clickEffect
+            initialHeight: background.height
+            initialWidth: background.width
+            anchors.centerIn: parent
         }
 
         GenericFocusControl {
