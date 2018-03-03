@@ -35,7 +35,7 @@ qreal CheckBoxIndicator::dashOffset() const
     return m_dashOffset;
 }
 
-void CheckBoxIndicator::setDashOffset(qreal &p_dashOffset)
+void CheckBoxIndicator::setDashOffset(const qreal &p_dashOffset)
 {
     if(m_dashOffset != p_dashOffset)
     {
@@ -50,7 +50,7 @@ qreal CheckBoxIndicator::lineWidth() const
     return m_checkPen.widthF();
 }
 
-void CheckBoxIndicator::setLineWidth(qreal &p_lineWidth)
+void CheckBoxIndicator::setLineWidth(const qreal &p_lineWidth)
 {
     if(p_lineWidth != lineWidth())
     {
@@ -65,7 +65,7 @@ QColor CheckBoxIndicator::color() const
     return m_checkPen.color();
 }
 
-void CheckBoxIndicator::setColor(QColor &p_color)
+void CheckBoxIndicator::setColor(const QColor &p_color)
 {
     if(p_color != color())
     {

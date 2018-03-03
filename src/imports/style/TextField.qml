@@ -111,9 +111,9 @@ T.TextField {
         Transition {
             reversible: true
             ColorAnimation { duration: 150; easing.type: Easing.InOutSine }
-            NumberAnimation { properties: "opacity"; duration: 200; easing.type: Easing.InOutSine }
-            NumberAnimation { properties: "height"; duration: 200; easing.type: Easing.InOutSine }
-            NumberAnimation { properties: "width"; duration: 200; easing.type: Easing.InOutSine }
+            NumberAnimation { properties: "opacity"; duration: 200; easing.type: Easing.OutSine }
+            NumberAnimation { properties: "height"; duration: 200; easing.type: Easing.OutSine }
+            NumberAnimation { properties: "width"; duration: 200; easing.type: Easing.OutSine }
         }
     ]
 }

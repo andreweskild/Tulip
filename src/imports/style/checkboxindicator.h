@@ -19,13 +19,13 @@ public:
     void paint(QPainter *painter);
 
     qreal dashOffset() const;
-    void setDashOffset(qreal &p_dashOffset);
+    void setDashOffset(const qreal &p_dashOffset);
 
     qreal lineWidth() const;
-    void setLineWidth(qreal &p_lineWidth);
+    void setLineWidth(const qreal &p_lineWidth);
 
     QColor color() const;
-    void setColor(QColor &p_color);
+    void setColor(const QColor &p_color);
 
 
 signals:

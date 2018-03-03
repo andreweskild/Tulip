@@ -6,7 +6,7 @@ import Tulip.Style 1.0
 T.Switch {
     id: control
 
-    implicitWidth: 50
+    implicitWidth: 48
     implicitHeight: 20
 
     padding: 8
@@ -14,7 +14,7 @@ T.Switch {
 
     indicator: Item {
         x: control.position * (control.width - width)
-        width: 30
+        width: 32
         height: control.height
         transform: Translate {
             y: control.pressed || !control.enabled ? 2 : 0

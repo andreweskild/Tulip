@@ -17,8 +17,8 @@ T.Slider {
                control.visualPosition * (control.availableWidth - width)
         y: orientation === Qt.Vertical ? control.visualPosition * (control.availableHeight - height) :
                                          0
-        height: orientation === Qt.Vertical ? control.width : control.height
-        width: orientation === Qt.Vertical ? control.width : control.height
+        height: orientation === Qt.Vertical ? 32 : control.height
+        width: orientation === Qt.Vertical ? control.width : 32
         transform: Translate {
             y: control.pressed || !control.enabled ? 0 : -2
 

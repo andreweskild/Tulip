@@ -25,40 +25,47 @@ T.SpinBox {
 
     contentItem: Item {
         anchors.horizontalCenter: parent.horizontalCenter
-        clip: true
 
-        transform: Translate {
-            y: input.activeFocus ? 2 : 0
+//        transform: Translate {
+//            y: input.activeFocus ? 2 : 0
 
 
-            Behavior on y {
-                NumberAnimation {
-                    duration: 100
-                    easing {
-                        type: Easing.InOutSine
-                    }
-                }
-            }
+//            Behavior on y {
+//                NumberAnimation {
+//                    duration: 100
+//                    easing {
+//                        type: Easing.InOutSine
+//                    }
+//                }
+//            }
+//        }
+
+        Rectangle {
+            id: focusEffect
+            height: parent.height
+            width: parent.width
+            anchors.centerIn: parent
+            color: ColorPalette.accent
+            opacity: 0
+            radius: 2
+        }
+
+        Rectangle {
+            id: inputBorder
+            anchors.fill: parent
+            color: ColorPalette.raisedBorder
         }
 
         Rectangle {
             id: inputBG
-            height: parent.height
-            width: parent.width + 4
+            height: parent.height - 2
+            width: parent.width - 2
             anchors.centerIn: parent
 
             color: ColorPalette.raised
 
             border.color: ColorPalette.raisedHighlight
             border.width: 1
-            FocusGradient {
-                id: gradientRect
-                anchors.fill: parent
-                radius: parent.radius
-                opacity: 0
-                primaryColor: ColorPalette.accent
-                secondaryColor: ColorPalette.accentLight
-            }
         }
 
 
@@ -75,7 +82,7 @@ T.SpinBox {
             verticalAlignment: Qt.AlignVCenter
             selectByMouse: true
 
-//            cursorDelegate: CursorDelegate{}
+            cursorDelegate: CursorDelegate{}
 
             readOnly: !control.editable
             validator: control.validator
@@ -87,6 +94,7 @@ T.SpinBox {
         x: control.mirrored ? 0 : parent.width - width
         implicitWidth: control.height
         implicitHeight: control.height
+        z: -1
         clip: true
 
         transform: Translate {
@@ -135,6 +143,7 @@ T.SpinBox {
         x: control.mirrored ? parent.width - width : 0
         implicitWidth: control.height
         implicitHeight: control.height
+        z: -1
         clip: true
 
         transform: Translate {
@@ -171,11 +180,27 @@ T.SpinBox {
 
     background: Item {
         anchors.fill: parent
+        z: -2
         BoxShadow {
-            height: parent.height
-            width: parent.width
-            hovered: control.hovered && !control.up.pressed && !control.down.pressed
-            hidden: !control.enabled
+            anchors.left: parent.left
+            height: down.indicator.height
+            width: down.indicator.width
+            hovered: control.hovered
+            hidden: !control.enabled || control.down.pressed
+        }
+        BoxShadow {
+            anchors.centerIn: parent
+            height: inputBG.height
+            width: inputBG.width
+            hovered: control.hovered
+            hidden: !control.enabled || input.activeFocus
+        }
+        BoxShadow {
+            anchors.right: parent.right
+            height: up.indicator.height
+            width: up.indicator.width
+            hovered: control.hovered
+            hidden: !control.enabled || control.up.pressed
         }
 
     }
@@ -188,12 +213,16 @@ T.SpinBox {
             PropertyChanges { target: plusSymbolH;  opacity: 0.5}
             PropertyChanges { target: plusSymbolV;  opacity: 0.5}
             PropertyChanges { target: inputBG;  color: ColorPalette.sunken}
-            PropertyChanges { target: inputBG;  border.color: ColorPalette.sunkenBorder}
+            PropertyChanges { target: inputBG;  border.color: ColorPalette.sunken}
         },
         State {
             name: "input-active"; when: input.activeFocus
             PropertyChanges { target: inputBG;  color: ColorPalette.raised}
-            PropertyChanges { target: inputBG;  border.color: ColorPalette.accent}
+            PropertyChanges { target: inputBG;  border.color: ColorPalette.raised}
+            PropertyChanges { target: inputBorder;  color: ColorPalette.accentBorder}
+            PropertyChanges { target: focusEffect;  height: contentItem.height + 6}
+            PropertyChanges { target: focusEffect;  width: contentItem.width + 6}
+            PropertyChanges { target: focusEffect;  opacity: 1}
         },
         State {
             name: "up-active"; when: control.up.hovered || control.up.pressed
@@ -207,9 +236,8 @@ T.SpinBox {
         State {
             name: "input-hovered"; when: control.hovered && !input.activeFocus
             PropertyChanges { target: input;  color: ColorPalette.contentAccented}
-            PropertyChanges { target: inputBG;  color: ColorPalette.accent}
-            PropertyChanges { target: inputBG;  border.color: ColorPalette.accentHighlight}
-            PropertyChanges { target: gradientRect;  opacity: 1}
+            //PropertyChanges { target: gradientRect;  opacity: 1}
+            PropertyChanges { target: inputBorder;  color: ColorPalette.accentBorder}
         }
 
     ]
@@ -218,7 +246,9 @@ T.SpinBox {
         Transition {
             reversible: true
             ColorAnimation { duration: 150; easing.type: Easing.InOutSine }
-            NumberAnimation { properties: "opacity"; duration: 100; easing.type: Easing.InOutSine }
+            NumberAnimation { properties: "opacity"; duration: 200; easing.type: Easing.OutSine }
+            NumberAnimation { properties: "height"; duration: 200; easing.type: Easing.OutSine }
+            NumberAnimation { properties: "width"; duration: 200; easing.type: Easing.OutSine }
         }
     ]
 }
