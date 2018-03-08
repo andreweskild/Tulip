@@ -6,8 +6,8 @@ import Tulip.Style 1.0
 T.Switch {
     id: control
 
-    implicitWidth: 48
-    implicitHeight: 20
+    implicitWidth: 52
+    implicitHeight: 24
 
     padding: 8
     spacing: 8
@@ -67,17 +67,18 @@ T.Switch {
         y: 2
 
         Rectangle {
-            anchors.fill: parent
+            width: parent.width + 2
+            height: parent.height + 2
+            anchors.centerIn: parent
             color: ColorPalette.windowHighlight
             radius: 4
         }
 
         Rectangle {
-            height: parent.height - 2
-            width: parent.width - 2
-            anchors.centerIn: parent
-            color: control.visualPosition > .5 ? ColorPalette.sunkenDark : ColorPalette.sunken
-            border.color: control.visualPosition > .5 ? ColorPalette.sunkenDarkBorder : ColorPalette.sunkenBorder
+            id: switchBG
+            anchors.fill: parent
+            color: control.visualPosition > .5 ? ColorPalette.accent : ColorPalette.sunken
+            border.color: control.visualPosition > .5 ? ColorPalette.accentBorder : ColorPalette.sunkenBorder
             border.width: 1
             radius: 4
             Behavior on color {
@@ -100,14 +101,15 @@ T.Switch {
 
         Item {
             height: parent.height
-            width: parent.height
+            width: 22
             anchors.left: parent.left
 
             Rectangle {
+                id: onIndicator
                 width: 2
                 height: 8
                 anchors.centerIn: parent
-                color: control.visualPosition > .5 ? ColorPalette.contentSecondary : ColorPalette.content
+                color: control.visualPosition > .5 ? ColorPalette.contentAccented : ColorPalette.content
                 radius: 2
                 Behavior on color {
                     ColorAnimation {
@@ -121,7 +123,7 @@ T.Switch {
         }
         Item {
             height: parent.height
-            width: parent.height
+            width: 22
             anchors.right: parent.right
 
             Rectangle {
@@ -131,7 +133,7 @@ T.Switch {
                 color: "transparent"
                 radius: height * .5
                 border.width: 2
-                border.color: control.visualPosition > .5 ? ColorPalette.contentSecondary : ColorPalette.content
+                border.color: control.visualPosition > .5 ? ColorPalette.contentAccented : ColorPalette.content
                 Behavior on color {
                     ColorAnimation {
                         duration: 150
@@ -147,6 +149,14 @@ T.Switch {
         State {
             name: "disabled"; when: !control.enabled
             PropertyChanges { target: background;  opacity: 0.5}
+            PropertyChanges { target: switchBG;
+                color: control.visualPosition > .5 ? ColorPalette.sunkenDark : ColorPalette.sunken
+                border.color: control.visualPosition > .5 ? ColorPalette.sunkenDarkBorder : ColorPalette.sunkenBorder
+            }
+            PropertyChanges {
+                target: onIndicator;
+                color: control.visualPosition > .5 ? ColorPalette.contentSecondary : ColorPalette.content
+            }
         }
     ]
 

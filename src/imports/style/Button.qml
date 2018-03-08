@@ -10,19 +10,20 @@ T.Button {
     id: control
 
     implicitWidth: label.contentWidth + padding + padding
-    implicitHeight: 20
+    implicitHeight: 24
     padding: 16
-    font.pointSize: 10
     font.weight: Font.DemiBold
-    font.family: "IBM Plex Sans"
 
     onClicked: {
-        clickEffect.show();
+        if(!control.flat)
+        {
+            clickEffect.show();
+        }
     }
 
 
     transform: Translate {
-        y: control.pressed || control.checked ? 2 : 0
+        y: (control.pressed || control.checked) && !control.flat ? 2 : 0
         Behavior on y {
             NumberAnimation {
                 duration: 100

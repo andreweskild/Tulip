@@ -14,9 +14,7 @@ T.TextArea {
                              background ? background.implicitHeight : 0,
                              placeholder.implicitHeight + 1 + topPadding + bottomPadding)
 
-    font.pointSize: 10
     font.weight: Font.DemiBold
-    font.family: "IBM Plex Sans"
     topPadding: 8
     bottomPadding: 15
     leftPadding: 8

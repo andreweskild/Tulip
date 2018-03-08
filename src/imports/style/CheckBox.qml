@@ -8,13 +8,11 @@ T.CheckBox {
     id: control
 
     implicitWidth: 96
-    implicitHeight: 20
+    implicitHeight: 24
 
     spacing: 5
 
-    font.pointSize: 10
     font.weight: Font.DemiBold
-    font.family: "IBM Plex Sans"
 
     onClicked: {
         clickEffect.show();
@@ -80,9 +78,11 @@ T.CheckBox {
 
             CheckBoxIndicator {
                 id: checkIndicator
-                anchors.fill: parent
-                lineWidth: 3
-                color: ColorPalette.content
+                height: parent.height - 8
+                width: parent.height - 8
+                anchors.centerIn: parent
+                lineWidth: 2
+                color: ColorPalette.sunkenDarkBorder
                 dashOffset: control.checked ? 0 : 14
 
 

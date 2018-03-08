@@ -7,8 +7,8 @@ import Tulip.Style 1.0
 T.Slider {
     id: control
 
-    implicitWidth: control.horizontal ? 120 : 20
-    implicitHeight: control.horizontal ? 20 : 120
+    implicitWidth: control.horizontal ? 120 : 24
+    implicitHeight: control.horizontal ? 24 : 120
 
 
     handle: Item {
@@ -56,20 +56,23 @@ T.Slider {
         border.width: 1
 
         Rectangle {
+            id: sliderColor
             width: orientation === Qt.Vertical ? parent.width : handleBG.x + handleBG.width
             height: orientation === Qt.Vertical ?  parent.height - handleBG.y : parent.height
             y: orientation === Qt.Vertical ? handleBG.y : 0
             radius: parent.radius
-            border.color: ColorPalette.sunkenDarkBorder
+            border.color: ColorPalette.accentBorder
             border.width: 1
 
-            color: ColorPalette.sunkenDark
+            color: ColorPalette.accent
         }
     }
     states: [
         State {
             name: "disabled"; when: !control.enabled
             PropertyChanges { target: background;  opacity: 0.5}
+            PropertyChanges { target: sliderColor;  color: ColorPalette.sunkenDark;
+                border.color: ColorPalette.sunkenDarkBorder}
         }
     ]
 

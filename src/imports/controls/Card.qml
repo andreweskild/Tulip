@@ -28,6 +28,6 @@ import QtQuick.Controls.Material 2.3
     \l{https://material.io/guidelines/components/cards.html}{Material Design guidelines}.
 */
 C.Pane {
-    padding: 0
+    padding: 8
     radius: 4
 }

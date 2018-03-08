@@ -8,24 +8,53 @@ import Tulip.Effects 1.0
 T.ItemDelegate {
     id: control
 
-    implicitWidth: 72
-    implicitHeight: contentItem.implicitHeight
+    implicitWidth: Math.max(background ? background.implicitWidth : 0,
+                            contentItem.implicitWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(background ? background.implicitHeight : 0,
+                             Math.max(contentItem.implicitHeight,
+                                      indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding)
 
-    padding: 16
-    font.pointSize: 10
     font.weight: Font.DemiBold
-    font.family: "IBM Plex Sans"
 
+    onClicked: {
+        clickEffect.show();
+    }
 
-    background: GenericFocusControl {
-        id: gradientRect
-        x: -1
-        width: parent.width + 2
-        height: parent.height
-        radius: 0
-        hovered: control.hovered
-        pressed: control.pressed
-        opacity: 0
+    background: Item {
+        implicitHeight: 24
+
+        Rectangle {
+            id: highlightRect
+            anchors.fill: parent
+            color: ColorPalette.accentHighlight
+            opacity: 0
+            Rectangle {
+                anchors.right: parent.right
+                anchors.rightMargin: -1
+                height: parent.height
+                width: 4
+                color: ColorPalette.accent
+            }
+        }
+
+        ClickEffect {
+            id: clickEffect
+            initialWidth: parent.width
+            initialHeight: parent.height
+            anchors.centerIn: parent
+            radius: 0
+        }
+
+        GenericFocusControl {
+            id: gradientRect
+            x: -1
+            width: parent.width + 2
+            height: parent.height
+            radius: 0
+            hovered: control.hovered
+            pressed: control.pressed
+            opacity: 0
+        }
     }
 
     states: [
@@ -40,6 +69,10 @@ T.ItemDelegate {
         State {
             name: "hovered"; when: control.hovered
             PropertyChanges { target: gradientRect;  opacity: 1}
+        },
+        State {
+            name: "active"; when: control.highlighted
+            PropertyChanges { target: highlightRect;  opacity: 1}
         }
     ]
 

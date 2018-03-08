@@ -8,17 +8,19 @@ Rectangle {
     color: ColorPalette.accentBorder
     radius: 6
     opacity: 0
+    enabled: false
 
     property int initialHeight
     property int initialWidth
 
     function show() {
-        clickAnimation.start();
+        clickEffect.enabled = true;
     }
 
     ParallelAnimation {
         id: clickAnimation
-        running: false
+        running: clickEffect.enabled
+        alwaysRunToEnd: true
 
         NumberAnimation {
             target: clickEffect
@@ -43,6 +45,10 @@ Rectangle {
             from: 1
             to: 0
             easing.type: Easing.InOutSine
+        }
+
+        onStopped: {
+            clickEffect.enabled = false;
         }
     }
 

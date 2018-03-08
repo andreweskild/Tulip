@@ -7,6 +7,5 @@ T.Label {
 
     color: enabled ? ColorPalette.content : ColorPalette.sunken
     linkColor: ColorPalette.accent
-    font.family: "IBM Plex Sans"
 
 }

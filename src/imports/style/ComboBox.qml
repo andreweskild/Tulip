@@ -10,18 +10,17 @@ T.ComboBox {
     id: control
 
     implicitWidth: 120
-    implicitHeight: 20
+    implicitHeight: 24
 
     leftPadding: 8
     rightPadding: 8
-    font.pointSize: 10
     font.weight: Font.DemiBold
-    font.family: "IBM Plex Sans"
+
 
 
     delegate: MenuItem {
         width: parent.width
-        height: 20
+        height: 24
         text: control.textRole ? (Array.isArray(control.model) ? modelData[control.textRole] : model[control.textRole]) : modelData
         highlighted: control.highlightedIndex === index
     }
@@ -124,6 +123,7 @@ T.ComboBox {
             hovered: control.hovered
         }
 
+
         GenericFocusControl {
             anchors.fill: parent
             hovered: control.hovered && !popup.opened
@@ -139,11 +139,12 @@ T.ComboBox {
         width: control.width
         height: contentItem.implicitHeight + topPadding + bottomPadding
         transformOrigin: Item.Top
-        topPadding: 5
-        bottomPadding: 5
-        topMargin: 10
-        bottomMargin: 10
+        topPadding: 4
+        bottomPadding: 4
+        topMargin: 8
+        bottomMargin: 8
         y: -topPadding
+
 
         enter: Transition {
             NumberAnimation {
@@ -186,7 +187,7 @@ T.ComboBox {
 
                 target: background
                 property: "height"
-                to: 20
+                to: 24
             }
             NumberAnimation {
                 targets: [arrowIndicator, label]

@@ -7,11 +7,9 @@ T.SpinBox {
     id: control
 
     implicitWidth: 96
-    implicitHeight: 20
+    implicitHeight: 24
     baselineOffset: contentItem.y + contentItem.baselineOffset
-    font.pointSize: 10
     font.weight: Font.DemiBold
-    font.family: "IBM Plex Sans"
 
     leftPadding: (control.mirrored ? (up.indicator ? up.indicator.width : 0) : (down.indicator ? down.indicator.width : 0))
     rightPadding: (control.mirrored ? (down.indicator ? down.indicator.width : 0) : (up.indicator ? up.indicator.width : 0))
@@ -25,20 +23,6 @@ T.SpinBox {
 
     contentItem: Item {
         anchors.horizontalCenter: parent.horizontalCenter
-
-//        transform: Translate {
-//            y: input.activeFocus ? 2 : 0
-
-
-//            Behavior on y {
-//                NumberAnimation {
-//                    duration: 100
-//                    easing {
-//                        type: Easing.InOutSine
-//                    }
-//                }
-//            }
-//        }
 
         Rectangle {
             id: focusEffect
@@ -111,7 +95,6 @@ T.SpinBox {
             }
         }
 
-
         GenericFocusControl {
             anchors.right: parent.right
             height: parent.height
@@ -127,7 +110,15 @@ T.SpinBox {
             y: (parent.height - height) / 2
             width: parent.width / 3
             height: 2
-            color: ColorPalette.content
+            color: control.up.hovered || control.up.pressed ? ColorPalette.contentAccented : ColorPalette.content
+            Behavior on color {
+                ColorAnimation {
+                    duration: 150
+                    easing {
+                        type: Easing.InOutSine
+                    }
+                }
+            }
         }
         Rectangle {
             id: plusSymbolH
@@ -135,7 +126,15 @@ T.SpinBox {
             y: (parent.height - height) / 2
             width: 2
             height: parent.width / 3
-            color: ColorPalette.content
+            color: control.up.hovered || control.up.pressed ? ColorPalette.contentAccented : ColorPalette.content
+            Behavior on color {
+                ColorAnimation {
+                    duration: 150
+                    easing {
+                        type: Easing.InOutSine
+                    }
+                }
+            }
         }
     }
 
@@ -174,7 +173,15 @@ T.SpinBox {
             y: (parent.height - height) / 2
             width: parent.width / 3
             height: 2
-            color: ColorPalette.content
+            color: control.down.hovered || control.down.pressed ? ColorPalette.contentAccented : ColorPalette.content
+            Behavior on color {
+                ColorAnimation {
+                    duration: 150
+                    easing {
+                        type: Easing.InOutSine
+                    }
+                }
+            }
         }
     }
 
@@ -202,6 +209,12 @@ T.SpinBox {
             hovered: control.hovered
             hidden: !control.enabled || control.up.pressed
         }
+        ClickEffect {
+            id: upClickEffect
+            initialWidth: up.indicator.width
+            initialHeight: up.indicator.height
+            anchors.centerIn: parent
+        }
 
     }
 
@@ -223,15 +236,6 @@ T.SpinBox {
             PropertyChanges { target: focusEffect;  height: contentItem.height + 6}
             PropertyChanges { target: focusEffect;  width: contentItem.width + 6}
             PropertyChanges { target: focusEffect;  opacity: 1}
-        },
-        State {
-            name: "up-active"; when: control.up.hovered || control.up.pressed
-            PropertyChanges { target: plusSymbolH;  color: ColorPalette.contentAccented}
-            PropertyChanges { target: plusSymbolV;  color: ColorPalette.contentAccented}
-        },
-        State {
-            name: "down-active"; when: control.down.hovered || control.down.pressed
-            PropertyChanges { target: minusSymbol;  color: ColorPalette.contentAccented}
         },
         State {
             name: "input-hovered"; when: control.hovered && !input.activeFocus

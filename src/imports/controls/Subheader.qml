@@ -16,7 +16,8 @@
 import QtQuick 2.10
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.3
-import QtQuick.Controls.Material 2.3
+import Tulip.Controls 1.0 as TulipControls
+import Tulip.Style 1.0
 
 /*!
    \qmltype Subheader
@@ -38,6 +39,9 @@ ItemDelegate {
     */
     property alias textColor: label.color
 
+    topPadding: TulipControls.Units.smallSpacing
+    bottomPadding: TulipControls.Units.smallSpacing
+    leftPadding: TulipControls.Units.mediumSpacing
     width: parent ? parent.width : undefined
     hoverEnabled: false
     opacity: enabled ? 1.0 : 0.6
@@ -45,18 +49,18 @@ ItemDelegate {
     Layout.fillWidth: true
 
     background: Item {
-        implicitHeight: 48
+        implicitHeight: label.contentHeight
     }
 
     contentItem: Label {
         id: label
 
-        font.weight: Font.DemiBold
-        font.pixelSize: 14
+        font.weight: Font.Bold
+        font.pointSize: 14
         text: listItem.text
 
         verticalAlignment: Text.AlignVCenter
 
-        color: Material.secondaryTextColor
+        color: ColorPalette.content
     }
 }

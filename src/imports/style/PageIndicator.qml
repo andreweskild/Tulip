@@ -8,20 +8,18 @@ T.PageIndicator {
 
     implicitWidth: Math.max(background ? background.implicitWidth : 0,
                             contentItem.implicitWidth + padding + padding)
-    implicitHeight: 20 + padding + padding
+    implicitHeight: 24 + padding + padding
 
 
     padding: 6
     spacing: 8
-    font.pointSize: 10
     font.weight: Font.DemiBold
-    font.family: "IBM Plex Sans"
 
     delegate: Item {
         id: indicatorMouse
         anchors.verticalCenter: parent.verticalCenter
-        height: 20
-        width: 20
+        height: 24
+        width: 24
 
 
         transform: Translate {

@@ -14,6 +14,7 @@
 
 import QtQuick 2.10
 import QtQuick.Controls 2.3
+import QtQuick.Layouts 1.3
 import Tulip.Controls 1.0 as TulipControls
 
 /*!
@@ -53,20 +54,22 @@ Dialog {
     focus: true
     modal: true
 
-    Column {
+    contentItem: Column {
         id: dialogContent
-        anchors {
-            left: parent.left
-            top: parent.top
-        }
         spacing: TulipControls.Units.smallSpacing
         width: parent.width
+        padding: 24
 
-        TulipControls.DialogLabel {
-            id: dialogLabel
-            wrapMode: Text.Wrap
-            width: parent.width
-            visible: text !== ""
+        Item {
+            height: dialogLabel.contentHeight
+            width: dialogLabel.contentWidth
+            anchors.horizontalCenter: parent.horizontalCenter
+            TulipControls.DialogLabel {
+                id: dialogLabel
+                wrapMode: Text.Wrap
+                anchors.fill: parent
+            }
         }
+
     }
 }

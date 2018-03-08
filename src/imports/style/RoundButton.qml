@@ -9,11 +9,13 @@ T.RoundButton {
     id: control
 
     property bool dangerous: false
-    implicitWidth: 22
-    implicitHeight: 22
-    font.pointSize: 10
+    implicitWidth: 26
+    implicitHeight: 26
     font.weight: Font.DemiBold
-    font.family: "IBM Plex Sans"
+
+    onClicked: {
+        clickEffect.show();
+    }
 
     transform: Translate {
         y: control.pressed ? 2 : 0
@@ -48,6 +50,14 @@ T.RoundButton {
             hidden: control.pressed || !control.enabled
             hovered: control.hovered
             radius: parent.height * .5
+        }
+
+        ClickEffect {
+            id: clickEffect
+            initialWidth: content.width
+            initialHeight: content.height
+            anchors.centerIn: parent
+            radius: height * .5
         }
 
         GenericFocusControl {

@@ -1,6 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Templates 2.2 as T
 import Tulip.Style 1.0
+import Tulip.Effects 1.0
 
 T.ProgressBar {
     id: control
@@ -8,21 +9,45 @@ T.ProgressBar {
     implicitWidth: 120
     implicitHeight: 8
 
+    onValueChanged: {
+        if(value === 1.0)
+        {
+            if(!control.indeterminate)
+            {
+                clickEffect.show();
+            }
+        }
+    }
 
-    background: Rectangle {
-        anchors.centerIn: parent
-        height: control.height + 2
-        width: control.width + 2
-        color: ColorPalette.windowHighlight
-        radius: 4
+    background: Item {
+        anchors.fill: parent
+
+
+
         Rectangle {
             anchors.centerIn: parent
-            height: parent.height - 2
-            width: parent.width - 2
+            height: control.height + 2
+            width: control.width + 2
+            color: ColorPalette.windowHighlight
+            radius: 4
+        }
+
+        ClickEffect {
+            id: clickEffect
+            initialWidth: parent.width
+            initialHeight: parent.height
+            anchors.centerIn: parent
+//            color: ColorPalette.sunkenDark
+        }
+
+        Rectangle {
+            anchors.centerIn: parent
+            height: parent.height
+            width: parent.width
             color: ColorPalette.sunken
             border.color: ColorPalette.sunkenBorder
             border.width: 1
-            radius: parent.radius
+            radius: 4
         }
     }
 
@@ -33,9 +58,9 @@ T.ProgressBar {
             visible: !control.indeterminate
             width: control.visualPosition * parent.width
             height: parent.height
-            radius: background.radius
-            color: ColorPalette.sunkenDark
-            border.color: ColorPalette.sunkenDarkBorder
+            radius: 4
+            color: ColorPalette.accent
+            border.color: ColorPalette.accentBorder
             border.width: 1
         }
 
@@ -44,9 +69,9 @@ T.ProgressBar {
             visible: control.indeterminate
             width: control.width * .2
             height: parent.height
-            radius: background.radius
-            color: ColorPalette.sunkenDark
-            border.color: ColorPalette.sunkenDarkBorder
+            radius: 4
+            color: ColorPalette.accent
+            border.color: ColorPalette.accentBorder
             border.width: 1
             SequentialAnimation {
                 running: true

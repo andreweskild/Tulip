@@ -31,6 +31,9 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     app.setQuitOnLastWindowClosed(true);
 
+    QFont font(QLatin1String("IBM Plex Sans"), 8);
+    app.setFont(font);
+
     // @uri Tulip.Demo
     qmlRegisterType<IconCategoryModel>("Tulip.Demo", 1, 0, "IconCategoryModel");
     qmlRegisterType<IconNameModel>("Tulip.Demo", 1, 0, "IconNameModel");

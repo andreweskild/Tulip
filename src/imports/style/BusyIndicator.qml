@@ -9,59 +9,13 @@ T.BusyIndicator {
     implicitHeight: 40
 
     contentItem: Item {
-//        BusyIndicatorArc {
-//            id: indicatorBorder
-//            anchors.fill: parent
-//            color: ColorPalette.sunkenDarkBorder
-//            arcWidth: 10
-
-//            SequentialAnimation {
-//                running: control.running
-//                loops: Animation.Infinite
-//                NumberAnimation {
-//                    target: indicatorBorder
-//                    duration: 400;
-//                    property: "arcLength";
-//                    to: 270
-//                    easing {
-//                        type: Easing.InCubic
-//                    }
-//                }
-//                NumberAnimation {
-//                    target: indicatorBorder
-//                    duration: 400;
-//                    property: "arcLength";
-//                    to: 120
-//                    easing {
-//                        type: Easing.OutCubic
-//                    }
-//                }
-//            }
-
-//            states: State {
-//                name: "running"; when: control.running;
-//                PropertyChanges { target: indicatorBorder; rotation: 360 }
-//            }
-
-//            transitions: Transition {
-//                animations: [
-//                    RotationAnimation {
-//                        duration: 800;
-//                        loops: Animation.Infinite
-//                        easing {
-//                            type: Easing.InOutCubic
-//                        }
-//                    }
-//                ]
-//            }
-//        }
         BusyIndicatorArc {
             id: indicator
             height: parent.height - 2
             width: parent.width - 2
             anchors.centerIn: parent
-            color: ColorPalette.sunkenDark
-            borderColor: ColorPalette.sunkenDarkBorder
+            color: ColorPalette.accent
+            borderColor: ColorPalette.accentBorder
             arcWidth: 8
 
             SequentialAnimation {

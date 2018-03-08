@@ -6,12 +6,16 @@ Rectangle {
     id: root
     property color primaryColor
     property color secondaryColor
+
+    readonly property real gradientRadius: root.width > root.height ?
+                                               width * 1.5 :
+                                               height * 1.5
     layer.enabled: true
     layer.effect: RadialGradient {
         anchors.fill: parent
         anchors.margins: root.border.width
-        horizontalRadius: width * 1.5
-        verticalRadius: width * 1.5
+        horizontalRadius: gradientRadius
+        verticalRadius: gradientRadius
         cached: true
         horizontalOffset: hoverMouse.mouseX - width * .5
         verticalOffset: hoverMouse.mouseY - height * .5

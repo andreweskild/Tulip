@@ -16,6 +16,7 @@ import QtQuick 2.10
 import QtQuick.Controls 2.3
 import QtQuick.Controls.Material 2.3
 import Tulip.Core 1.0 as TulipCore
+import Tulip.Style 1.0
 
 /*!
     \qmltype DialogLabel
@@ -32,6 +33,8 @@ import Tulip.Core 1.0 as TulipCore
     \l{https://material.io/guidelines/style/typography.html}{Material Design guidelines}.
 */
 Label {
-    font.pixelSize: TulipCore.Device.isMobile ? 18 : 17
-    color: Material.secondaryTextColor
+    font.pointSize: 10
+    font.weight: Font.DemiBold
+    verticalAlignment: Text.AlignVCenter
+    horizontalAlignment: Text.AlignHCenter
 }

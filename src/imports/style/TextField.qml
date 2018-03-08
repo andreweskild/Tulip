@@ -8,13 +8,11 @@ import Tulip.Style 1.0
 T.TextField {
     id: control
     hoverEnabled: true
-    font.pointSize: 10
     font.weight: Font.DemiBold
-    font.family: "IBM Plex Sans"
 
 
     implicitWidth: 120
-    implicitHeight: 20
+    implicitHeight: 24
 
     selectByMouse: true
 

@@ -88,19 +88,16 @@ Flickable {
                             Tumbler {
                                 id: hoursTumbler
                                 model: 12
-                                delegate: delegateComponent
                             }
 
                             Tumbler {
                                 id: minutesTumbler
                                 model: 60
-                                delegate: delegateComponent
                             }
 
                             Tumbler {
                                 id: amPmTumbler
                                 model: ["AM", "PM"]
-                                delegate: delegateComponent
                             }
                         }
                     }
@@ -113,19 +110,16 @@ Flickable {
                             Tumbler {
                                 enabled: false
                                 model: 12
-                                delegate: delegateComponent
                             }
 
                             Tumbler {
                                 enabled: false
                                 model: 60
-                                delegate: delegateComponent
                             }
 
                             Tumbler {
                                 enabled: false
                                 model: ["AM", "PM"]
-                                delegate: delegateComponent
                             }
                         }
                     }

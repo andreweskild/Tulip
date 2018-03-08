@@ -8,15 +8,17 @@ T.RadioButton {
 
     implicitWidth: Math.max(background ? background.implicitWidth : 0,
                             contentItem.implicitWidth + leftPadding + rightPadding)
-    implicitHeight: 20
+    implicitHeight: 24
 
     spacing: 5
 
-    font.pointSize: 10
     font.weight: Font.DemiBold
-    font.family: "IBM Plex Sans"
 
+    onClicked: {
+        clickEffect.show();
+    }
     background: Item {
+        id: content
         height: control.height
         width: control.height
         transform: Translate {
@@ -38,6 +40,14 @@ T.RadioButton {
             anchors.fill: parent
             hidden: control.pressed || !control.enabled
             hovered: control.hovered
+        }
+
+        ClickEffect {
+            id: clickEffect
+            initialWidth: content.width
+            initialHeight: content.height
+            anchors.centerIn: parent
+            radius: height * .5
         }
 
         GenericFocusControl {
@@ -68,10 +78,12 @@ T.RadioButton {
         Rectangle {
             id: toggleIndicator
             anchors.centerIn: parent
-            width: control.checked ? parent.height * .5 : 0
-            height: control.checked ? parent.height * .5 : 0
+            width: control.checked ? 8 : 0
+            height: control.checked ? 8 : 0
             radius: height * .5
-            color: ColorPalette.content
+            color: ColorPalette.sunkenDark
+            border.color: ColorPalette.sunkenDarkBorder
+            border.width: 1
             opacity: control.checked ? 1 : 0
 
             Behavior on height {

@@ -101,8 +101,8 @@ ItemDelegate {
     icon.height: 20
     icon.color: "red"
 
-    leftPadding: TulipControls.Units.smallSpacing * 2
-    rightPadding: TulipControls.Units.smallSpacing * 2
+    leftPadding: TulipControls.Units.mediumSpacing
+    rightPadding: TulipControls.Units.mediumSpacing
     topPadding: 0
     bottomPadding: 0
 
@@ -147,7 +147,7 @@ ItemDelegate {
             return Math.max(height, leftHeight, rightHeight);
         }
 
-//        spacing: TulipControls.Units.smallSpacing * 2
+        spacing: TulipControls.Units.smallSpacing * 2
 
         Item {
             id: leftItem

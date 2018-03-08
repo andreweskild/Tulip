@@ -21,10 +21,8 @@ Item {
         id: card
         anchors.centerIn: parent
         width: 400
-        height: picture.height + column.height + column.anchors.margins + topPadding + bottomPadding
+        height: picture.height + column.height + padding + padding
 
-        topPadding: 8
-        bottomPadding: 8
 
         Image {
             id: picture
@@ -49,9 +47,8 @@ Item {
                 left: parent.left
                 top: picture.bottom
                 right: parent.right
-                margins: Units.smallSpacing * 2
             }
-            spacing: Units.smallSpacing * 2
+            spacing: 8
 
             TitleLabel {
                 text: qsTr("Yosemite National Park")

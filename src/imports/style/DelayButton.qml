@@ -10,12 +10,13 @@ T.DelayButton {
     id: control
 
     implicitWidth: label.contentWidth + padding + padding
-    implicitHeight: 20
+    implicitHeight: 24
     padding: 16
-    font.pointSize: 10
     font.weight: Font.DemiBold
-    font.family: "IBM Plex Sans"
 
+    onActivated: {
+        clickEffect.show();
+    }
 
     transform: Translate {
         y: control.pressed ? 2 : 0
@@ -57,6 +58,12 @@ T.DelayButton {
             hovered: control.hovered
         }
 
+        ClickEffect {
+            id: clickEffect
+            initialWidth: content.width
+            initialHeight: content.height
+            anchors.centerIn: parent
+        }
         GenericFocusControl {
             id: background
             anchors.fill: parent

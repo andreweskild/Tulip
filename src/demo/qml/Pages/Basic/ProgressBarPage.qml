@@ -94,7 +94,7 @@ Flickable {
 
                         SequentialAnimation on value {
                             running: true
-                            loops: NumberAnimation.Infinite
+                            loops: 1
 
                             NumberAnimation {
                                 from: 0.0

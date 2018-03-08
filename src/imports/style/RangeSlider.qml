@@ -6,8 +6,8 @@ import Tulip.Style 1.0
 T.RangeSlider {
     id: control
 
-    implicitWidth: control.horizontal ? 120 : 20
-    implicitHeight: control.horizontal ? 20 : 120
+    implicitWidth: control.horizontal ? 120 : 24
+    implicitHeight: control.horizontal ? 24 : 120
 
     first.handle: Item {
         id: firstHandle
@@ -15,11 +15,11 @@ T.RangeSlider {
                                          control.first.visualPosition * (control.availableWidth - width)
         y: orientation === Qt.Vertical ? control.first.visualPosition * (control.availableHeight - height) :
                                          0
-        height: control.horizontal ? control.height : control.width
-        width: control.horizontal ? control.height : control.width
+        height: control.horizontal ? control.height : 32
+        width: control.horizontal ? 32 : control.width
 
         transform: Translate {
-            y: control.first.pressed ? 2 : 0
+            y: control.first.pressed || !control.enabled ? 2 : 0
 
 
             Behavior on y {
@@ -34,7 +34,7 @@ T.RangeSlider {
 
         BoxShadow {
             anchors.fill: parent
-            hidden: control.first.pressed
+            hidden: control.first.pressed || !control.enabled
             hovered: control.first.hovered
         }
 
@@ -53,11 +53,11 @@ T.RangeSlider {
                                          control.second.visualPosition * (control.availableWidth - width)
         y: orientation === Qt.Vertical ? control.second.visualPosition * (control.availableHeight - height) :
                                          0
-        height: control.horizontal ? control.height : control.width
-        width: control.horizontal ? control.height : control.width
+        height: control.horizontal ? control.height : 32
+        width: control.horizontal ? 32 : control.width
 
         transform: Translate {
-            y: control.second.pressed ? 2 : 0
+            y: control.second.pressed || !control.enabled ? 2 : 0
 
 
             Behavior on y {
@@ -72,7 +72,7 @@ T.RangeSlider {
 
         BoxShadow {
             anchors.fill: parent
-            hidden: control.second.pressed
+            hidden: control.second.pressed || !control.enabled
             hovered: control.second.hovered
         }
 
@@ -96,6 +96,7 @@ T.RangeSlider {
         radius: 4
 
         Rectangle {
+            id: sliderColor
             x: orientation === Qt.Vertical ? 0 :
                                              firstHandle.x
             y: orientation === Qt.Vertical ? secondHandle.y :
@@ -105,9 +106,24 @@ T.RangeSlider {
             height: orientation === Qt.Vertical ? firstHandle.y + firstHandle.height - secondHandle.y :
                                                   parent.height
             radius: parent.radius
-            color: ColorPalette.sunkenDark
-            border.color: ColorPalette.sunkenDarkBorder
+            color: ColorPalette.accent
+            border.color: ColorPalette.accentBorder
             border.width: 1
         }
     }
+    states: [
+        State {
+            name: "disabled"; when: !control.enabled
+            PropertyChanges { target: background;  opacity: 0.5}
+            PropertyChanges { target: sliderColor;  color: ColorPalette.sunkenDark;
+                border.color: ColorPalette.sunkenDarkBorder}
+        }
+    ]
+
+    transitions: [
+        Transition {
+            ColorAnimation { duration: 150; easing.type: Easing.InOutSine }
+            NumberAnimation { properties: "opacity"; duration: 100; easing.type: Easing.InOutSine }
+        }
+    ]
 }
