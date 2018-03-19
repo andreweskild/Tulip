@@ -5,6 +5,7 @@ import QtQuick.Controls.impl 2.2
 import QtGraphicalEffects 1.0
 import Tulip.Style 1.0
 import Tulip.Effects 1.0
+import Tulip.Controls 1.0
 
 T.Button {
     id: control

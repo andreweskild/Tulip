@@ -38,7 +38,8 @@ TulipTemplates.YearSelector {
         clip: true
         model: control.model
         delegate: control.delegate
-        currentIndex: control.selectedYear - control.from.getFullYear()
+//        currentIndex: control.selectedYear - control.from.getFullYear()
+        currentIndex: 20
         highlightRangeMode: ListView.StrictlyEnforceRange
         highlightMoveDuration: 0
         preferredHighlightBegin: height / 2 - height / control.visibleItemCount / 2

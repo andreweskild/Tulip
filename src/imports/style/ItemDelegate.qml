@@ -27,6 +27,7 @@ T.ItemDelegate {
             id: highlightRect
             anchors.fill: parent
             color: ColorPalette.accentHighlight
+            border.color: ColorPalette.accent
             opacity: 0
             Rectangle {
                 anchors.right: parent.right
@@ -80,7 +81,7 @@ T.ItemDelegate {
         Transition {
             reversible: true
             ColorAnimation { duration: 150; easing.type: Easing.InOutSine }
-            NumberAnimation { properties: "opacity"; duration: 100; easing.type: Easing.InOutSine }
+            NumberAnimation { properties: "opacity"; duration: 200; easing.type: Easing.InOutSine }
         }
     ]
 }

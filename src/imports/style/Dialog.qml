@@ -20,8 +20,6 @@ T.Dialog {
     contentWidth: contentItem.implicitWidth || (contentChildren.length === 1 ? contentChildren[0].implicitWidth : 0)
     contentHeight: contentItem.implicitHeight || (contentChildren.length === 1 ? contentChildren[0].implicitHeight : 0)
 
-//    padding: 20
-//    topPadding: 20
 
 
     enter: Transition {
@@ -59,10 +57,8 @@ T.Dialog {
         }
     }
 
-    header: Label {
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
-        text: control.title
+    header: DialogTitleBar {
+        title: control.title
         visible: control.title != ""
     }
 

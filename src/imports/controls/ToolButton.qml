@@ -15,6 +15,7 @@
 import QtQuick 2.10
 import QtQuick.Controls 2.3 as QQC2
 import QtQuick.Controls.impl 2.3 as QQCImpl2
+import Tulip.Style 1.0
 
 /*!
     \qmltype ToolButton
@@ -26,6 +27,12 @@ import QtQuick.Controls.impl 2.3 as QQCImpl2
 QQC2.ToolButton {
     id: control
 
+
+    implicitWidth: Math.max(background ? background.implicitWidth : 0,
+                            contentItem.implicitWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(background ? background.implicitHeight : 0,
+                             contentItem.implicitHeight + topPadding + bottomPadding)
+    z: hovered ? 1000 : 0
     /*!
         \qmlproperty bool hoverAnimation
 
@@ -42,7 +49,7 @@ QQC2.ToolButton {
         icon: control.icon
         text: control.text
         font: control.font
-        color: control.icon.color
+        color: control.hovered ? ColorPalette.contentAccented : ColorPalette.content
 
         rotation: control.hoverAnimation && control.hovered ? 90 : 0
 

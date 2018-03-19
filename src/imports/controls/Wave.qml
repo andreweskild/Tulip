@@ -94,7 +94,7 @@ Item {
                 y: initialY - size/2
                 width: size
                 height: size
-                radius: size/2
+                radius: size/8
             }
         }
     }
@@ -120,7 +120,7 @@ Item {
             }
             NumberAnimation {
                 property: "size"
-                easing.type: Easing.OutCubic
+                easing.type: Easing.InOutCubic
             }
             ScriptAction {
                 script: wave.finished(wave.open)

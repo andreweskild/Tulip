@@ -27,7 +27,7 @@ import Tulip.Controls 1.0 as TulipControls
 ToolBar {
     id: toolbar
 
-    Material.elevation: page ? page.appBar.elevation : 2
+    Material.elevation: page ? page.menuBar.elevation : 2
     Material.background: Material.primaryColor
     Material.theme: TulipControls.Color.isDarkColor(Material.background) ? Material.Dark : Material.Light
 
@@ -46,32 +46,32 @@ ToolBar {
     /*!
         \qmlmethod void AppToolBar::pop(Page page)
 
-        Pop the \l AppBar that belongs to \a page from the stack.
+        Pop the \l menuBar that belongs to \a page from the stack.
      */
     function pop(page) {
-        stack.pop(page.appBar, StackView.PopTransition);
+        stack.pop(page.menuBar, StackView.PopTransition);
         toolbar.page = page;
     }
 
     /*!
         \qmlmethod void AppToolBar::push(Page page)
 
-        Push the \l AppBar that belongs to \a page to the stack.
+        Push the \l menuBar that belongs to \a page to the stack.
      */
     function push(page) {
-        stack.push(page.appBar, {}, StackView.PushTransition);
-        page.appBar.toolbar = toolbar;
+        stack.push(page.menuBar, {}, StackView.PushTransition);
+        page.menuBar.toolbar = toolbar;
         toolbar.page = page;
     }
 
     /*!
         \qmlmethod void AppToolBar::replace(Page page)
 
-        Replace current \l AppBar with the one that belongs to \a page.
+        Replace current \l menuBar with the one that belongs to \a page.
      */
     function replace(page) {
-        stack.replace(page.appBar, {}, StackView.ReplaceTransition);
-        page.appBar.toolbar = toolbar;
+        stack.replace(page.menuBar, {}, StackView.ReplaceTransition);
+        page.menuBar.toolbar = toolbar;
         toolbar.page = page;
     }
 

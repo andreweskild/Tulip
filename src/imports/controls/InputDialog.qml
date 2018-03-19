@@ -51,27 +51,27 @@ Dialog {
     modal: true
     standardButtons: Dialog.Ok | Dialog.Cancel
 
-    ColumnLayout {
-        anchors {
-            left: parent.left
-            top: parent.top
-        }
+    footer: DialogButtonBox {
+        visible: count > 0
+    }
+
+    contentItem: Column {
+        padding: 12
         width: parent.width
+        spacing: 12
 
         TulipControls.DialogLabel {
             id: dialogLabel
+            width: parent.width - parent.padding * 2
             wrapMode: Text.Wrap
             visible: text !== ""
-
-            Layout.fillWidth: true
         }
 
         TextField {
             id: textField
             focus: true
             onAccepted: dialog.accept()
-
-            Layout.fillWidth: true
+            width: parent.width - parent.padding * 2
         }
     }
 }

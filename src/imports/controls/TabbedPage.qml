@@ -88,37 +88,24 @@ TulipControls.Page {
     readonly property alias selectedTab: swipeView.currentItem
 
     /*!
-        \qmlproperty ToolBar tabBar
-
-        Tool bar that contains tabs.
-    */
-    readonly property alias tabBar: tabToolBar
-
-    /*!
         \qmlproperty TabBar tabs
 
         Tab bar.
     */
     readonly property alias tabs: tabBar
 
-    appBar.elevation: 0
 
-    header: ToolBar {
-        id: tabToolBar
-
-        visible: tabBar.count > 0
-
-        TabBar {
+    menuBar.centerContents: TabBar {
             id: tabBar
+
 
             property bool fixed: true
             property bool centered: false
 
             anchors {
-                top: centered ? undefined : parent.top
+                bottom: centered ? undefined : parent.bottom
                 left: centered ? undefined : parent.left
                 right: centered ? undefined : parent.right
-                leftMargin: centered ? 0 : appBar ? appBar.leftKeyline - 12 : 0
                 horizontalCenter: centered ? parent.horizontalCenter : undefined
             }
 
@@ -135,51 +122,16 @@ TulipControls.Page {
                     icon.source: delegateData.icon.source
 
                     text: delegateData.title
-
+                    z: 100
                     width: parent.fixed ? parent.width / parent.count : implicitWidth
-
-                    contentItem: RowLayout {
-                        IconLabel {
-                            id: tabIcon
-
-                            spacing: tabButton.spacing
-                            mirrored: tabButton.mirrored
-                            display: tabButton.display
-
-                            icon: tabButton.icon
-                            text: tabButton.text
-                            font: tabButton.font
-                            color: tabButton.icon.color
-
-                            Layout.fillWidth: true
-                            Layout.fillHeight: true
-                        }
-
-                        TulipControls.ToolButton {
-                            id: tabCloseButton
-
-                            icon.width: 16
-                            icon.height: 16
-                            icon.source: TulipControls.Utils.iconUrl("navigation/close")
-
-                            focus: Qt.NoFocus
-                            visible: delegateData.canRemove
-
-                            onClicked: page.removeTab(index)
-
-                            Layout.alignment: Qt.AlignVCenter
-                        }
-                    }
                 }
             }
-        }
     }
 
     SwipeView {
         id: swipeView
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
-
     }
 
     /*!

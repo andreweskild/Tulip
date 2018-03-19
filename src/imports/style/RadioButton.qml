@@ -138,7 +138,8 @@ T.RadioButton {
         },
         State {
             name: "active"; when: control.hovered || control.pressed
-            PropertyChanges { target: toggleIndicator; color: ColorPalette.contentAccented }
+            PropertyChanges { target: toggleIndicator; color: ColorPalette.contentAccented;
+                   border.color: ColorPalette.contentAccented}
         }
     ]
 

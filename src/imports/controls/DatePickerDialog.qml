@@ -66,7 +66,7 @@ Dialog {
         \value DatePicker.Landscape The date picker is landscape.
         \value DatePicker.Portrait The date picker is portrait.
     */
-    property alias orientation: datePicker.orientation
+    //property alias orientation: datePicker.orientation
 
     /*!
         \qmlproperty bool Tulip.Controls::DatePickerDialog::dayOfWeekRowVisible
@@ -123,7 +123,7 @@ Dialog {
         }
         \endcode
     */
-    property alias standardButtonsContainer: buttonBox.data
+    //property alias standardButtonsContainer: buttonBox.data
 
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
@@ -138,14 +138,14 @@ Dialog {
 
     TulipControls.DatePicker {
         id: datePicker
-        footer: DialogButtonBox {
-            id: buttonBox
-            padding: 0
-            standardButtons: dialog.standardButtons
-            onAccepted: dialog.accept()
-            onRejected: dialog.reject()
+//        footer: DialogButtonBox {
+//            id: buttonBox
+//            padding: 0
+//            standardButtons: dialog.standardButtons
+//            onAccepted: dialog.accept()
+//            onRejected: dialog.reject()
 
-            Material.background: "transparent"
-        }
+//            Material.background: "transparent"
+//        }
     }
 }

@@ -16,6 +16,7 @@ import QtQuick 2.10
 import QtQuick.Controls 2.3
 import QtQuick.Controls.Material 2.3
 import Tulip.Controls 1.0 as TulipControls
+import Tulip.Style 1.0
 import "../.."
 
 Item {
@@ -24,7 +25,7 @@ Item {
         anchors.fill: parent
         Rectangle {
             anchors.fill: parent
-            color: Material.accentColor
+            color: ColorPalette.accent
         }
     }
     Button {

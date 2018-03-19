@@ -29,6 +29,7 @@ InfoBar 1.0 InfoBar.qml
 InputDialog 1.0 InputDialog.qml
 ListItem 1.0 ListItem.qml
 Loadable 1.0 Loadable.qml
+MenuBar 1.0 MenuBar.qml
 NavigationDrawer 1.0 NavigationDrawer.qml
 NoiseBackground 1.0 NoiseBackground.qml
 OverlayView 1.0 OverlayView.qml

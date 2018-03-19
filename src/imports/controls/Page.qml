@@ -54,12 +54,8 @@ Page {
       this page's action bar. See the \l Page example for details on how to use
       this property.
      */
-    property alias appBar: appBar
+    property alias menuBar: menuBar
 
-    /*!
-       The page's actions shown in the action bar.
-     */
-    property alias actions: appBar.actions
 
     /*!
        The action shown to the left of the title in the action bar. By default,
@@ -67,7 +63,11 @@ Page {
        page in the page stack. However, you can replace it with your own action,
        for example, an icon to open a navigation drawer when on your root page.
      */
-    property alias leftAction: appBar.leftAction
+    property alias appActions: menuBar.appActions
+
+    property alias fileActions: menuBar.fileActions
+
+    property alias editActions: menuBar.editActions
 
     /*!
        \internal
@@ -150,20 +150,11 @@ Page {
     header: null
     footer: null
 
-    TulipControls.AppBar {
-        id: appBar
-
+    TulipControls.MenuBar {
+        id: menuBar
 
         title: page.title
 
-        leftAction: TulipControls.Action {
-            icon.source: TulipControls.Utils.iconUrl("navigation/arrow_back")
 
-            text: qsTr("Back")
-            toolTip: qsTr("Go back")
-            visible: page.canGoBack
-
-            onTriggered: page.pop()
-        }
     }
 }

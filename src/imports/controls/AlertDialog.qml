@@ -54,6 +54,7 @@ Dialog {
     focus: true
     modal: true
 
+
     contentItem: Column {
         id: dialogContent
         spacing: TulipControls.Units.smallSpacing

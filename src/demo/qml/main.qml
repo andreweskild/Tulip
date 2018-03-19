@@ -28,8 +28,6 @@ TulipControls.ApplicationWindow {
 
     title: qsTr("Tulip Demo")
 
-    appBar.maxActionCount: 3
-
     TulipControls.NavigationDrawer {
         id: navDrawer
 
@@ -85,44 +83,57 @@ TulipControls.ApplicationWindow {
         title: window.title
 
 
-        leftAction: TulipControls.Action {
-            icon.source: TulipControls.Utils.iconUrl("navigation/menu")
-            onTriggered: navDrawer.open()
-        }
+        appActions:[
+            TulipControls.Action {
+                text: "About App"
+                icon.source: TulipControls.Utils.iconUrl("navigation/menu")
+                onTriggered: navDrawer.open()
+            },
+            TulipControls.Action {
+                text: "Help"
+                icon.source: TulipControls.Utils.iconUrl("navigation/menu")
+                onTriggered: navDrawer.open()
+            },
+            TulipControls.Action {
+                text: "Quit"
+                icon.source: TulipControls.Utils.iconUrl("navigation/menu")
+                onTriggered: Qt.quit()
+            }
+        ]
 
-        actions: [
+        fileActions:[
             TulipControls.Action {
-                text: qsTr("Dummy error")
-                icon.source: TulipControls.Utils.iconUrl("alert/warning")
-                toolTip: qsTr("Show a dummy error")
-                onTriggered: console.log("Dummy error")
+                text: "New.."
+                icon.source: TulipControls.Utils.iconUrl("navigation/menu")
+                onTriggered: navDrawer.open()
             },
             TulipControls.Action {
-                text: qsTr("Colors")
-                icon.source: TulipControls.Utils.iconUrl("image/color_lens")
-                toolTip: qsTr("Pick a color")
-                onTriggered: console.log("Colors")
+                text: "Open.."
+                icon.source: TulipControls.Utils.iconUrl("navigation/menu")
+                onTriggered: navDrawer.open()
             },
             TulipControls.Action {
-                text: qsTr("Settings")
-                icon.source: TulipControls.Utils.iconUrl("action/settings")
-                toolTip: qsTr("Settings")
-                hoverAnimation: true
-                onTriggered: console.log("Settings clicked")
+                text: "Save.."
+                icon.source: TulipControls.Utils.iconUrl("navigation/menu")
+                onTriggered: navDrawer.open()
+            }
+        ]
+
+        editActions:[
+            TulipControls.Action {
+                text: "Cut"
+                icon.source: TulipControls.Utils.iconUrl("navigation/menu")
+                onTriggered: navDrawer.open()
             },
             TulipControls.Action {
-                text: qsTr("This should not be visible")
-                icon.source: TulipControls.Utils.iconUrl("alert/warning")
-                visible: false
+                text: "Copy"
+                icon.source: TulipControls.Utils.iconUrl("navigation/menu")
+                onTriggered: navDrawer.open()
             },
             TulipControls.Action {
-                text: qsTr("Language")
-                icon.source: TulipControls.Utils.iconUrl("action/language")
-                enabled: false
-            },
-            TulipControls.Action {
-                text: qsTr("Accounts")
-                icon.source: TulipControls.Utils.iconUrl("action/account_circle")
+                text: "Paste"
+                icon.source: TulipControls.Utils.iconUrl("navigation/menu")
+                onTriggered: navDrawer.open()
             }
         ]
 

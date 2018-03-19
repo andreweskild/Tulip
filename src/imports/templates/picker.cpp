@@ -175,51 +175,29 @@ void Picker::updateLayout()
     const qreal footerHeight = m_footer ? 50 : 0;
 
     if (m_header) {
-        if (m_orientation == Landscape) {
-            m_header->setX(0);
-            m_header->setY(0);
-            m_header->setWidth(width() / 3);
-            m_header->setHeight(height());
-        } else {
-            m_header->setX(0);
-            m_header->setY(0);
-            m_header->setWidth(width());
-            m_header->setHeight(headerHeight);
-        }
+        m_header->setX(0);
+        m_header->setY(0);
+        m_header->setWidth(width());
+        m_header->setHeight(headerHeight);
         m_header->setZ(1);
     }
 
     if (m_selector) {
         const qreal margin = 5;
 
-        if (m_orientation == Landscape) {
-            m_selector->setX((width() / 3) + margin);
-            m_selector->setY(0);
-            m_selector->setWidth(width() - (width() / 3) - (margin * 2));
-            m_selector->setHeight(height() - footerHeight);
-        } else {
-            m_selector->setX(margin);
-            m_selector->setY(headerHeight);
-            m_selector->setWidth(width() - (margin * 2));
-            m_selector->setHeight(height() - headerHeight - footerHeight);
-        }
+        m_selector->setX(margin);
+        m_selector->setY(margin);
+        m_selector->setWidth(width() - (margin * 2));
+        m_selector->setHeight(height() - footerHeight);
         m_selector->setZ(1);
     }
 
     if (m_footer) {
         const qreal margin = 10;
 
-        if (m_orientation == Landscape) {
-            m_footer->setX(margin + (width() / 3));
-            m_footer->setY(height() - footerHeight);
-            m_footer->setWidth(((width() / 3) * 2) - (margin * 2));
-            m_footer->setHeight(footerHeight);
-        } else {
-            m_footer->setX(margin);
-            m_footer->setY(height() - footerHeight);
-            m_footer->setWidth(width() - (margin * 2));
-            m_footer->setHeight(footerHeight);
-        }
-        m_footer->setZ(1);
+        m_footer->setX(0);
+        m_footer->setY(height() - footerHeight);
+        m_footer->setWidth(width());
+        m_footer->setHeight(footerHeight);
     };
 }

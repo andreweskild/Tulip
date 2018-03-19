@@ -29,12 +29,7 @@ Components.StyledPage {
             spacing: 16
 
             Button {
-                text: qsTr("Landscape")
-                onClicked: datePickerDialogLandscape.open()
-            }
-
-            Button {
-                text: qsTr("Portrait")
+                text: qsTr("Dialog")
                 onClicked: datePickerDialogPortrait.open()
             }
 
@@ -45,45 +40,23 @@ Components.StyledPage {
             }
 
             TulipControls.DatePicker {
-                orientation: TulipControls.DatePicker.Landscape
+                //orientation: TulipControls.DatePicker.Portrait
                 selectedDate: new Date(2012, 11, 21)
             }
-
-            TulipControls.DatePicker {
-                orientation: TulipControls.DatePicker.Portrait
-                selectedDate: new Date(2012, 11, 21)
-            }
-        }
-
-        TulipControls.DatePickerDialog {
-            id: datePickerDialogLandscape
-            orientation: TulipControls.DatePicker.Landscape
-            selectedDate: new Date(2012, 11, 21)
-            standardButtons: DialogButtonBox.Ok | DialogButtonBox.Cancel
-            standardButtonsContainer: Button {
-                height: parent.height - 5
-                anchors.verticalCenter: parent.verticalCenter
-                text: qsTr("Today")
-                flat: true
-                onClicked: datePickerDialogLandscape.selectedDate = new Date()
-            }
-            onAccepted: dateLabel.text = selectedDate.toLocaleString(Qt.locale(), "yyyy-MM-dd")
-
-            Material.theme: page.Material.theme
         }
 
         TulipControls.DatePickerDialog {
             id: datePickerDialogPortrait
-            orientation: TulipControls.DatePicker.Portrait
+            //orientation: TulipControls.DatePicker.Portrait
             selectedDate: new Date(2012, 11, 21)
             standardButtons: DialogButtonBox.Ok | DialogButtonBox.Cancel
-            standardButtonsContainer: Button {
-                height: parent.height - 5
-                anchors.verticalCenter: parent.verticalCenter
-                text: qsTr("Today")
-                flat: true
-                onClicked: datePickerDialogPortrait.selectedDate = new Date()
-            }
+//            standardButtonsContainer: Button {
+//                height: parent.height - 5
+//                anchors.verticalCenter: parent.verticalCenter
+//                text: qsTr("Today")
+//                flat: true
+//                onClicked: datePickerDialogPortrait.selectedDate = new Date()
+//            }
             onAccepted: dateLabel.text = selectedDate.toLocaleString(Qt.locale(), "yyyy-MM-dd")
 
             Material.theme: page.Material.theme

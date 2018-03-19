@@ -16,10 +16,10 @@
 import QtQml 2.2
 import QtQuick 2.10
 import QtQuick.Controls 2.3 as QQC2
-import QtQuick.Controls.Material 2.3
 import QtQuick.Layouts 1.3
 import Tulip.Core 1.0 as TulipCore
 import Tulip.Controls 1.0 as TulipControls
+import Tulip.Style 1.0
 
 /*!
    \qmltype AppBar
@@ -34,8 +34,6 @@ import Tulip.Controls 1.0 as TulipControls
 QQC2.ToolBar {
     id: appBar
 
-    Material.elevation: toolbar ? 0 : elevation
-    Material.theme: toolbar ? toolbar.Material.theme : Material.Light
 
     /*!
         \qmlproperty Action leftAction
@@ -69,20 +67,13 @@ QQC2.ToolBar {
         The elevation of the action bar. Set to 0 if you want have a header or some
         other view below the action bar that you want to appear as part of the action bar.
     */
-    property int elevation: 2
 
     /*!
        \internal
        The size of the left icon and the action icons.
     */
-    property int __iconSize: TulipCore.Device.gridUnit <= 48 ? 20 : 24
+    property int __iconSize: 24
 
-    /*!
-        \qmlproperty real leftKeyline
-
-        Keyline to align contents to the left to be visually appealing.
-    */
-    property alias leftKeyline: titleLabel.x
 
     /*!
         \qmlproperty int maxActionCount
@@ -96,14 +87,6 @@ QQC2.ToolBar {
     */
     property int maxActionCount: toolbar ? toolbar.maxActionCount : 3
 
-    /*!
-        \qmlproperty string title
-
-        The title displayed in the action bar. When used in a page, the title will
-        be set to the title of the page, so set the \l Page::title property instead
-        of changing this directly.
-    */
-    property alias title: titleLabel.text
 
     /*!
         \qmlproperty AppToolBar toolbar
@@ -118,7 +101,7 @@ QQC2.ToolBar {
         id: leftButton
 
         property bool showing: leftAction && leftAction.visible
-        property int margin: (width - 24)/2
+        //property int margin: (width - 24)/2
 
         QQC2.ToolTip.visible: QQC2.ToolTip.text != "" && (TulipCore.Device.isMobile ? pressed : hovered)
         QQC2.ToolTip.delay: Qt.styleHints.mousePressAndHoldInterval
@@ -127,7 +110,7 @@ QQC2.ToolBar {
         anchors {
             verticalCenter: actionsRow.verticalCenter
             left: parent.left
-            leftMargin: leftButton.showing ? 16 - leftButton.margin : -leftButton.width
+            leftMargin: leftButton.showing ? 16 : -leftButton.width
         }
 
         icon.width: appBar.__iconSize
@@ -152,33 +135,18 @@ QQC2.ToolBar {
         }
     }
 
-    TulipControls.TitleLabel {
-        id: titleLabel
-
-        anchors {
-            verticalCenter: actionsRow.verticalCenter
-            left: parent.left
-            right: actionsRow.left
-            leftMargin: 16 + (leftButton.showing ? TulipCore.Device.gridUnit - leftButton.margin : 0)
-            rightMargin: 16
-        }
-
-        textFormat: Text.PlainText
-        color: Material.primaryTextColor
-        elide: Text.ElideRight
-    }
 
     Row {
         id: actionsRow
 
         anchors {
             right: parent.right
-            rightMargin: 16 - leftButton.margin
+            rightMargin: 16
         }
 
         height: appBar.height
 
-        spacing: 24 - 2 * leftButton.margin
+        spacing: 24
 
         Repeater {
             model: appBar.actions.length > appBar.maxActionCount && appBar.maxActionCount > 0

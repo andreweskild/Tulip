@@ -73,7 +73,7 @@ Tab {
     StackView {
         id: stackView
         anchors {
-            left: listPane.right
+            left: parent.left
             top: parent.top
             right: parent.right
             bottom: parent.bottom

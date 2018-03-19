@@ -108,7 +108,7 @@ ItemDelegate {
 
     width: parent ? parent.width : undefined
 
-    hoverEnabled: TulipCore.Device.hoverEnabled
+    hoverEnabled: true
 
     opacity: enabled ? 1.0 : 0.6
 
@@ -189,7 +189,6 @@ ItemDelegate {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
 
                 visible: label.text != "" || valueLabel.text != ""
-//                spacing: TulipControls.Units.smallSpacing
 
                 TulipControls.SubheadingLabel {
                     id: label
@@ -198,14 +197,20 @@ ItemDelegate {
                     Layout.alignment: Qt.AlignVCenter
                     Layout.fillWidth: true
 
-                    // XXX: Hack to vertically center the label
-                    //Layout.topMargin: subLabel.visible ? 0 : ((listItem.height - height) / 2)
-
                     verticalAlignment: Text.AlignVCenter
                     text: listItem.text
                     elide: Text.ElideRight
-                    color: ColorPalette.content
+                    color: listItem.hovered || listItem.pressed || listItem.highlighted ?
+                               ColorPalette.contentAccented : ColorPalette.content
                     visible: text != ""
+                    Behavior on color {
+                        ColorAnimation {
+                            duration: 150
+                            easing {
+                                type: Easing.InOutSine
+                            }
+                        }
+                    }
                 }
 
                 TulipControls.BodyLabel {
@@ -261,4 +266,5 @@ ItemDelegate {
             Layout.preferredHeight: parent.height
         }
     }
+
 }

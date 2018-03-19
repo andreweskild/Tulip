@@ -37,13 +37,13 @@ T.DialogButtonBox {
         Rectangle {
             height: 1
             width: parent.width
-            color: ColorPalette.sunkenBorder
+            color: ColorPalette.raisedBorder
             anchors.bottom: parent.top
         }
 
         PaddedRectangle {
             anchors.fill: parent
-            color: ColorPalette.sunken
+            color: ColorPalette.window
             // Rounded corners should be only at the top or at the bottom
             topPadding: control.position === T.DialogButtonBox.Footer ? -4 : 0
             bottomPadding: control.position === T.DialogButtonBox.Header ? -4 : 0
