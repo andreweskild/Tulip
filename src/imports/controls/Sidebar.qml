@@ -15,8 +15,8 @@
 
 import QtQuick 2.10
 import QtQuick.Controls 2.3
-import QtQuick.Controls.Material 2.3
 import Tulip.Controls 1.0
+import Tulip.Style 1.0
 
 /*!
    \qmltype Sidebar
@@ -46,8 +46,6 @@ import Tulip.Controls 1.0
    }
    \endcode
 
-    For more information you can read the
-    \l{https://material.io/guidelines/patterns/navigation-drawer.html}{Material Design guidelines}.
  */
 Pane {
     id: sidebar
@@ -55,7 +53,12 @@ Pane {
     /*!
         \internal
     */
-    default property alias contents: contents.data
+    default property alias model: list.model
+
+    /*!
+        \internal
+    */
+    property alias delegate: list.delegate
 
     /*!
        The text displayed for the action.
@@ -73,9 +76,10 @@ Pane {
     property bool autoFlick: true
 
     /*!
-       The text displayed as header.
-     */
-    property alias header: headerItem.text
+        Index of currently selected Item
+      */
+    property int currentIndex: list.currentIndex
+
 
     Behavior on anchors.leftMargin {
         NumberAnimation { duration: 200 }
@@ -84,9 +88,6 @@ Pane {
     Behavior on anchors.rightMargin {
         NumberAnimation { duration: 200 }
     }
-
-    Material.background: Material.theme === Material.Light ? "white" : "#333"
-    Material.elevation: 1
 
     anchors {
         left: edge === Qt.LeftEdge ? parent.left : undefined
@@ -97,78 +98,50 @@ Pane {
         rightMargin: expanded ? 0 : -width
     }
 
-    width: 250
+    width: resizeHandle.x
+
 
     padding: 0
 
-    Rectangle {
-        color: Material.dividerColor
-        width: 1
+
+
+    ListView {
+        id: list
+        ScrollBar.vertical: ScrollBar {}
+
 
         anchors {
-            left: edge === Qt.RightEdge ? parent.left : undefined
-            top: parent.top
-            right: edge === Qt.LeftEdge ? parent.right : undefined
-            bottom: parent.bottom
-            //rightMargin: -1
+            fill: parent
+            // XXX - hack to align top of sidebar
+            topMargin: 8
         }
     }
 
     Item {
-        clip: true
+        id: resizeHandle
 
-        anchors {
-            fill: parent
-            leftMargin: edge === Qt.RightEdge ? 1 : 0
-            rightMargin: edge === Qt.LeftEdge ? 1 : 0
-        }
+        height: parent.height
+        width: 4
+        x: 200
 
-        Subheader {
-            id: headerItem
 
-            Material.elevation: flickable.atYBeginning ? 0 : 1
 
-            visible: text !== ""
-            z: 2
-        }
-
-        Flickable {
-            id: flickable
-
-            clip: true
-
-            ScrollBar.vertical: ScrollBar {}
+        MouseArea {
+            id: resizeArea
 
             anchors {
-                left: parent.left
-                top: headerItem.visible ? headerItem.bottom : parent.top
-                right: parent.right
-                bottom: parent.bottom
+                fill: parent
+                leftMargin: -4
             }
 
-            contentWidth: width
-            contentHeight: autoFlick ? contents.height : height
-            interactive: contentHeight > height
 
-            Item {
-                id: contents
+            cursorShape: Qt.SizeHorCursor
 
-                width: flickable.width
-                height: autoFlick ? childrenRect.height : flickable.height
-            }
+            drag.target: parent
+            drag.axis: Drag.XAxis
+            drag.minimumX: 140
+            drag.maximumX: 200
 
-            function getFlickableChild(item) {
-                if (item && item.hasOwnProperty("children")) {
-                    for (var i = 0; i < item.children.length; i++) {
-                        var child = item.children[i]
-                        if (internal.isVerticalFlickable(child)) {
-                            if (child.anchors.top === page.top || child.anchors.fill === page)
-                                return item.children[i]
-                        }
-                    }
-                }
-                return null
-            }
         }
     }
 }

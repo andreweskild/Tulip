@@ -22,50 +22,28 @@ import "Pages/Layouts"
 Tab {
     title: qsTr("Layout")
 
-    Pane {
-        id: listPane
-        anchors {
-            left: parent.left
-            top: parent.top
-            bottom: parent.bottom
-        }
-        width: 200
-        padding: 0
+    Sidebar {
+        id: sidebar
         z: 2
-
-        Material.background: "white"
-        Material.elevation: 1
-
-        Universal.background: Universal.accent
-
-        ListView {
-            id: listView
-            anchors.fill: parent
-            currentIndex: 0
-            model: ListModel {
-                ListElement { title: qsTr("AutomaticGrid"); source: "qrc:/qml/Pages/Layouts/AutomaticGridPage.qml" }
-                ListElement { title: qsTr("ColumnFlow"); source: "qrc:/qml/Pages/Layouts/ColumnFlowPage.qml" }
-            }
-            header: Subheader {
-                text: qsTr("Demos")
-            }
-            delegate: ListItem {
-                text: model.title
-                highlighted: ListView.isCurrentItem
-                onClicked: {
-                    listView.currentIndex = index
-                    stackView.push(model.source)
-                }
-            }
-
-            ScrollBar.vertical: ScrollBar {}
+        model: ListModel {
+            ListElement { title: qsTr("AutomaticGrid"); source: "qrc:/qml/Pages/Layouts/AutomaticGridPage.qml" }
+            ListElement { title: qsTr("ColumnFlow"); source: "qrc:/qml/Pages/Layouts/ColumnFlowPage.qml" }
         }
+        delegate: ListItem {
+            text: model.title
+            highlighted: ListView.isCurrentItem
+            onClicked: {
+                sidebar.currentIndex = index
+                stackView.push(model.source)
+            }
+        }
+
     }
 
     StackView {
         id: stackView
         anchors {
-            left: listPane.right
+            left: sidebar.right
             top: parent.top
             right: parent.right
             bottom: parent.bottom

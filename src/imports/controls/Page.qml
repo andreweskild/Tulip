@@ -153,6 +153,8 @@ Page {
     TulipControls.MenuBar {
         id: menuBar
 
+        height: 32
+
         title: page.title
 
 

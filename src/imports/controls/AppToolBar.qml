@@ -14,7 +14,6 @@
 
 import QtQuick 2.10
 import QtQuick.Controls 2.3
-import QtQuick.Controls.Material 2.3
 import Tulip.Controls 1.0 as TulipControls
 
 /*!
@@ -26,11 +25,6 @@ import Tulip.Controls 1.0 as TulipControls
  */
 ToolBar {
     id: toolbar
-
-    Material.elevation: page ? page.menuBar.elevation : 2
-    Material.background: Material.primaryColor
-    Material.theme: TulipControls.Color.isDarkColor(Material.background) ? Material.Dark : Material.Light
-
     /*!
         \internal
      */

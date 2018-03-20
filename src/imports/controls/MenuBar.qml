@@ -137,6 +137,7 @@ QQC2.ToolBar {
         TulipControls.ToolButton {
             text: "x"
             height: parent.height
+            onClicked: Qt.quit()
         }
     }
 }

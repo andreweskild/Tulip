@@ -42,7 +42,6 @@ int main(int argc, char *argv[])
 
     engine.addImportPath(QLatin1String("../lib/qml/"));
 
-
     engine.load(QUrl(QLatin1String("qrc:/qml/main.qml")));
 
     return app.exec();
