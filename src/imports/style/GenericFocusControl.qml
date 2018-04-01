@@ -70,12 +70,19 @@ Rectangle {
             PropertyChanges { target: root;  color: ColorPalette.accentBorder}
         },
         State {
-            name: "hovered"; when: root.hovered || root.highlighted
+            name: "hovered"; when: root.hovered
             PropertyChanges { target: control;  color: ColorPalette.accent}
             PropertyChanges { target: control;  border.color: ColorPalette.accentHighlight}
             PropertyChanges { target: root;  color: ColorPalette.accentBorder}
             PropertyChanges { target: gradientRect;  opacity: 1}
+        },
+        State {
+            name: "highlighted"; when: root.highlighted
+            PropertyChanges { target: control;  color: ColorPalette.accentHighlight}
+            PropertyChanges { target: control;  border.color: ColorPalette.accentHighlight}
+            PropertyChanges { target: root;  color: ColorPalette.accent}
         }
+
     ]
 
     transitions: [

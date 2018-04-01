@@ -122,7 +122,6 @@ TulipControls.Page {
                     icon.source: delegateData.icon.source
 
                     text: delegateData.title
-                    z: 100
                     width: parent.fixed ? parent.width / parent.count : implicitWidth
                 }
             }

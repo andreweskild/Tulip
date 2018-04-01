@@ -45,6 +45,7 @@ Tab {
             model: ListModel {
                 ListElement { title: qsTr("BottomSheet"); source: "qrc:/qml/Pages/Controls/BottomSheetPage.qml" }
                 ListElement { title: qsTr("Card"); source: "qrc:/qml/Pages/Controls/CardPage.qml" }
+                ListElement { title: qsTr("ColorPicker"); source: "qrc:/qml/Pages/Controls/ColorPickerPage.qml" }
                 ListElement { title: qsTr("Dialogs"); source: "qrc:/qml/Pages/Controls/DialogsPage.qml" }
                 ListElement { title: qsTr("DatePicker"); source: "qrc:/qml/Pages/Controls/DatePicker.qml" }
                 ListElement { title: qsTr("DateTimePicker"); source: "qrc:/qml/Pages/Controls/DateTimePicker.qml" }

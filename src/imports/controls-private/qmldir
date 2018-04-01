@@ -5,5 +5,7 @@ depends Tulip.Template 1.0
 typeinfo plugins.qmltypes
 
 DateSelector 1.0 DateSelector.qml
+ColorSelectionRect 1.0 ColorSelectionRect.qml
+HueSelectionSlider 1.0 HueSelectionSlider.qml
 TimeSelector 1.0 TimeSelector.qml
 YearSelector 1.0 YearSelector.qml

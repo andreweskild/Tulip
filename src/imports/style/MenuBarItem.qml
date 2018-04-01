@@ -12,10 +12,26 @@ T.MenuBarItem {
     implicitHeight: 24
     font.weight: Font.DemiBold
 
-    z: hovered ? 1000 : 0
 
     leftPadding: 16
     rightPadding: 16
+
+    transform: Translate {
+        y: (control.pressed || control.checked) || menu.opened ? 2 : 0
+        Behavior on y {
+            NumberAnimation {
+                duration: 100
+                easing {
+                    type: Easing.InOutSine
+                }
+            }
+        }
+    }
+
+    Connections {
+        target: menu
+        onOpened: clickEffect.show();
+    }
 
     contentItem: Text {
         id: buttonText
@@ -29,13 +45,31 @@ T.MenuBarItem {
 
     }
 
-    background: GenericFocusControl {
+    background: Item {
+        anchors.fill: parent
+
+        BoxShadow {
+            id: shadowEffect
+            anchors.fill: parent
+            hidden: control.pressed || !control.enabled || control.flat || control.checked
+            hovered: control.hovered || control.highlighted
+        }
+
+        ClickEffect {
+            id: clickEffect
+            initialWidth: parent.width
+            initialHeight: parent.height
+            anchors.centerIn: parent
+        }
+
+        GenericFocusControl {
             id: background
             anchors.fill: parent
-            pressed: control.pressed && !menu.isOpen
-            hovered: control.hovered && !menu.isOpen
-            radius: 0
+            pressed: control.pressed && !menu.opened
+            hovered: control.hovered
+            highlighted: menu.opened
         }
+    }
 
     states: [
         State {

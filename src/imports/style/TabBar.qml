@@ -1,5 +1,6 @@
 import QtQuick 2.10
 import QtQuick.Templates 2.3 as T
+import QtQuick.Controls 2.3
 import QtGraphicalEffects 1.0
 import Tulip.Style 1.0
 
@@ -15,7 +16,7 @@ T.TabBar {
 
     leftPadding: 8
     rightPadding: 8
-    spacing: 8
+    spacing: 4
 
     clip: true
 
@@ -34,6 +35,11 @@ T.TabBar {
         highlightRangeMode: ListView.ApplyRange
         preferredHighlightBegin: 48
         preferredHighlightEnd: width - 48
+
+        delegate: TabButton {
+            id: button
+            z: button.hovered ? 1000 : 0
+        }
 
     }
 

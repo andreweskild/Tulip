@@ -24,6 +24,9 @@ TulipControls.ApplicationWindow {
     visible: true
 
 
+    x: 20
+    y: 20
+
     width: 1024
     height: 800
 

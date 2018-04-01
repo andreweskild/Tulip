@@ -21,6 +21,7 @@ import Tulip.Controls 1.0 as TulipControls
 import Tulip.Controls.Private 1.0 as TulipControlsPrivate
 import Tulip.Templates 1.0 as TulipTemplates
 import Tulip.Style 1.0
+import Tulip.Effects 1.0
 import Qt.labs.calendar 1.0
 
 Item {
@@ -30,14 +31,19 @@ Item {
     property date to: new Date(2500, 1, 1)
     property date selectedDate: new Date(2018, 1, 1)
 
-    height: 400
-    width: 400
+    height: dateSelector.height + yearSelector.height
+    width: dateSelector.width
+
 
     property bool dayOfWeekRowVisible: true
-    property bool weekNumberVisible: true
+
+    BoxShadow {
+        anchors.fill: parent
+    }
 
     TulipControlsPrivate.DateSelector {
         id: dateSelector
+        anchors.centerIn: parent
         dayOfWeekRowVisible: picker.dayOfWeekRowVisible
         weekNumberVisible: picker.weekNumberVisible
         from: picker.from

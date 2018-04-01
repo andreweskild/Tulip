@@ -39,6 +39,7 @@ Project {
 
         files: ["*.cpp", "*.h"]
 
+
         Group {
             name: "Resource Data"
             files: ["images/**", "qml/**"]
@@ -48,7 +49,9 @@ Project {
         Group {
             name: "Android sources"
             prefix: "android/"
-            files: ["**"]
+            files: [
+                "**",
+            ]
         }
 
         Group {

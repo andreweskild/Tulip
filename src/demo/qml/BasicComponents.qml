@@ -43,7 +43,7 @@ Tab {
         }
         delegate: ListItem {
             text: model.title
-            highlighted: ListView.isCurrentItem
+            highlighted: index === sidebar.currentIndex
             onClicked: {
                 sidebar.currentIndex = index
                 stackView.push(model.source)

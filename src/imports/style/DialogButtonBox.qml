@@ -8,14 +8,15 @@ T.DialogButtonBox {
     id: control
 
     implicitWidth: Math.max(background ? background.implicitWidth : 0,
-                            contentItem.implicitWidth + leftPadding + rightPadding)
+                            contentItem.implicitWidth + rightPadding + leftPadding)
     implicitHeight: Math.max(background ? background.implicitHeight : 0,
                              contentItem.implicitHeight + topPadding + bottomPadding)
 
-    spacing: 8
-    padding: 12
     topPadding: 8
     bottomPadding: 8
+    rightPadding: 16
+    leftPadding: 16
+    spacing: 8
     alignment: Qt.AlignRight
 
 

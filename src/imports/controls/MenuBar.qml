@@ -32,9 +32,11 @@ import Tulip.Style 1.0
 QQC2.ToolBar {
     id: menuBar
 
-    height: 32
+    height: 40
 
     property string title
+
+    clip: true
 
 
     property list<TulipControls.Action> appActions
@@ -75,16 +77,14 @@ QQC2.ToolBar {
 
     QQC2.MenuBar {
         id: menuButtons
-        width: 200
-        height: menuBar.height
         anchors {
             left: parent.left
+            verticalCenter: parent.verticalCenter
         }
 
         QQC2.Menu {
             id: appMenu
             title: menuBar.title != "" ? menuBar.title : "App Menu"
-
 
             contentData: appActions
         }
@@ -118,25 +118,30 @@ QQC2.ToolBar {
     Row {
         id: windowControls
 
-        height: menuBar.height
 
-        spacing: -1
+        leftPadding: 8
+        rightPadding: 8
+        spacing: 4
 
         anchors {
             right: parent.right
+            verticalCenter: parent.verticalCenter
         }
 
-        TulipControls.ToolButton {
+        QQC2.Button {
             text: "_"
-            height: parent.height
+            height: 24
+            width: 24
         }
-        TulipControls.ToolButton {
+        QQC2.Button {
             text: "[ ]"
-            height: parent.height
+            height: 24
+            width: 24
         }
-        TulipControls.ToolButton {
+        QQC2.Button {
             text: "x"
-            height: parent.height
+            height: 24
+            width: 32
             onClicked: Qt.quit()
         }
     }

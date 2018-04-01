@@ -8,22 +8,24 @@ T.MenuBar {
     id: control
 
     implicitWidth: Math.max(background ? background.implicitWidth : 0,
-                            contentWidth)
+                            contentWidth + leftPadding + rightPadding)
     implicitHeight: 24
-    spacing: -1
+    spacing: 4
+    leftPadding: 8
+    rightPadding: 8
 
     hoverEnabled: true
 
 
-    delegate: MenuBarItem { height: parent.height }
+    delegate: MenuBarItem {}
 
     contentItem: Row {
             id: menuItems
-            height: control.height
             spacing: control.spacing
             Repeater {
                 model: control.contentModel
             }
         }
+
 
 }

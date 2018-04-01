@@ -182,7 +182,6 @@ void DateSelector::updateLayout()
     m_contentItem->setWidth(width());
     m_contentItem->setHeight(height());
     m_navigator->setWidth(width());
-    m_navigator->setHeight(50);
     m_calendar->setWidth(width());
     m_calendar->setHeight(height() - m_navigator->height());
     m_calendar->setX(0);

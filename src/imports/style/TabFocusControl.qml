@@ -22,10 +22,10 @@ Rectangle {
         width: parent.width - 2
         height: parent.height - 2
         anchors.centerIn: parent
-        color: ColorPalette.sunken
-        radius: 4
+        color: ColorPalette.raised
+        radius: parent.radius
 
-        border.color: ColorPalette.sunken
+        border.color: ColorPalette.raisedHighlight
         border.width: 1
 
         FocusGradient {

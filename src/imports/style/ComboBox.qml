@@ -22,7 +22,7 @@ T.ComboBox {
         width: parent.width
         height: 24
         text: control.textRole ? (Array.isArray(control.model) ? modelData[control.textRole] : model[control.textRole]) : modelData
-        highlighted: control.highlightedIndex === index
+        highlighted: control.currentIndex === index
     }
 
     indicator: LineArrowIndicator {
@@ -128,7 +128,6 @@ T.ComboBox {
             anchors.fill: parent
             hovered: control.hovered && !popup.opened
             pressed: control.pressed
-
         }
 
 

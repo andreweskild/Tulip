@@ -14,8 +14,8 @@
 
 import QtQuick 2.10
 import QtQuick.Controls 2.3
-import QtQuick.Controls.Material 2.3
 import Tulip.Controls 1.0 as TulipControls
+import Tulip.Controls.Private 1.0 as TulipControlsPrivate
 
 /*!
     \qmltype DatePickerDialog
@@ -80,7 +80,7 @@ Dialog {
 
         This property determines the visibility of the week number column.
     */
-    property alias weekNumberVisible: datePicker.weekNumberVisible
+    //property alias weekNumberVisible: datePicker.weekNumberVisible
 
     /*!
         \qmlproperty date Tulip.Controls::DatePickerDialog::from
@@ -125,6 +125,8 @@ Dialog {
     */
     //property alias standardButtonsContainer: buttonBox.data
 
+    width: datePicker.width
+    height: datePicker.height + footer.height
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
     padding: 0
@@ -134,18 +136,16 @@ Dialog {
     modal: true
 
     header.visible: false
-    footer.visible: false
 
-    TulipControls.DatePicker {
+    TulipControlsPrivate.DateSelector {
         id: datePicker
-//        footer: DialogButtonBox {
-//            id: buttonBox
-//            padding: 0
-//            standardButtons: dialog.standardButtons
-//            onAccepted: dialog.accept()
-//            onRejected: dialog.reject()
 
-//            Material.background: "transparent"
-//        }
     }
+//    footer: DialogButtonBox {
+//        id: buttonBox
+//        padding: 0
+//        standardButtons: dialog.standardButtons
+//        onAccepted: dialog.accept()
+//        onRejected: dialog.reject()
+//    }
 }

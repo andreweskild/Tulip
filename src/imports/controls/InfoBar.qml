@@ -19,6 +19,7 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.3
 import QtQuick.Controls.Material 2.3
 import Tulip.Core 1.0
+import Tulip.Style 1.0
 
 /*!
    \qmltype InfoBar
@@ -62,7 +63,7 @@ Rectangle {
 
         Button color.
     */
-    property color buttonColor: Material.accentColor
+    property color buttonColor: ColorPalette.contentAccented
 
     /*!
         \qmlproperty string text
@@ -125,7 +126,9 @@ Rectangle {
         }
     }
     radius: fullWidth ? 0 : 2
-    color: "#323232"
+    color: ColorPalette.sunkenDark
+    border.color: ColorPalette.sunkenDarkBorder
+    border.width: 1
     height: snackLayout.height
     width: fullWidth ? undefined : snackLayout.width
     opacity: opened ? 1 : 0
@@ -153,7 +156,7 @@ Rectangle {
         spacing: 0
 
         Item {
-            width: 24
+            width: 16
         }
 
         Label {
@@ -164,13 +167,13 @@ Rectangle {
                 Math.min(496 - snackButton.width - middleSpacer.width - 48,
                          infoBar.parent.width - snackButton.width - middleSpacer.width - 48)
 
-            Layout.preferredHeight: lineCount == 2 ? 80 : 48
+            Layout.preferredHeight: lineCount == 2 ? 48 : 32
             verticalAlignment: Text.AlignVCenter
             maximumLineCount: 2
             wrapMode: Text.Wrap
             elide: Text.ElideRight
             text: infoBar.text
-            color: "white"
+            color: ColorPalette.contentSecondary
         }
 
         Item {
@@ -178,21 +181,16 @@ Rectangle {
             width: infoBar.buttonText == "" ? 0 : infoBar.fullWidth ? 24 : 48
         }
 
-        Button {
+        ToolButton {
             id: snackButton
             visible: infoBar.buttonText != ""
             text: infoBar.buttonText
-            flat: true
+            Layout.fillHeight: true
             width: visible ? implicitWidth : 0
             font.bold: true
             onClicked: infoBar.clicked()
-
-            Material.foreground: infoBar.buttonColor
         }
 
-        Item {
-            width: 24
-        }
     }
 
     Behavior on opacity {

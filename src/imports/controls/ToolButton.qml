@@ -32,7 +32,6 @@ QQC2.ToolButton {
                             contentItem.implicitWidth + leftPadding + rightPadding)
     implicitHeight: Math.max(background ? background.implicitHeight : 0,
                              contentItem.implicitHeight + topPadding + bottomPadding)
-    z: hovered ? 1000 : 0
     /*!
         \qmlproperty bool hoverAnimation
 
@@ -42,6 +41,7 @@ QQC2.ToolButton {
     property bool hoverAnimation: false
 
     contentItem: QQCImpl2.IconLabel {
+        id: label
         spacing: control.spacing
         mirrored: control.mirrored
         display: control.display
@@ -57,4 +57,18 @@ QQC2.ToolButton {
             NumberAnimation { duration: 200 }
         }
     }
+    states: [
+        State {
+            name: "disabled"; when: !control.enabled;
+            PropertyChanges { target: label;  opacity: 0.5}
+        }
+    ]
+
+    transitions: [
+        Transition {
+            reversible: true
+            ColorAnimation { duration: 150; easing.type: Easing.InOutSine }
+            NumberAnimation { properties: "opacity"; duration: 100; easing.type: Easing.InOutSine }
+        }
+    ]
 }

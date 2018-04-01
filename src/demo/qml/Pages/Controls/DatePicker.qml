@@ -27,6 +27,7 @@ Components.StyledPage {
 
         Column {
             spacing: 16
+            x: 10
 
             Button {
                 text: qsTr("Dialog")
@@ -59,7 +60,6 @@ Components.StyledPage {
 //            }
             onAccepted: dateLabel.text = selectedDate.toLocaleString(Qt.locale(), "yyyy-MM-dd")
 
-            Material.theme: page.Material.theme
         }
     }
 }

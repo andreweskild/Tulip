@@ -25,21 +25,28 @@ import Tulip.Style 1.0
 TulipTemplates.DateSelector {
     id: control
 
-    height: listView.height
+    height: listView.height + navigator.height
     width: listView.width
 
     property alias currentItem: listView.currentItem
 
     onSelectedDateChanged: listView.currentIndex = listView.model.indexOf(selectedDate)
 
-    navigator: Item {
+    navigator: ToolBar {
         height: 32
+        y: 1
         TulipControls.ToolButton {
             id: prevMonthButton
+            height: parent.height
+            width: height
+            leftPadding: 0
+            rightPadding: 0
+
+            topRightRounded: true
 
             anchors.left: parent.left
             anchors.top: parent.top
-            anchors.leftMargin: 16
+
 
             icon.source: TulipControls.Utils.iconUrl("navigation/chevron_left")
 
@@ -55,10 +62,15 @@ TulipTemplates.DateSelector {
 
         TulipControls.ToolButton {
             id: nextMonthButton
+            height: parent.height
+            width: height
+            leftPadding: 0
+            rightPadding: 0
+
+            topLeftRounded: true
 
             anchors.top: parent.top
             anchors.right: parent.right
-            anchors.rightMargin: 16
 
             icon.source: TulipControls.Utils.iconUrl("navigation/chevron_right")
 
@@ -66,12 +78,13 @@ TulipTemplates.DateSelector {
         }
     }
 
+
     calendar: Item {
         ListView {
             id: listView
             clip: true
-            height: currentItem.height
-            width: currentItem.width
+            height: 24 * 7
+            width: 24 * 7 + 1
             snapMode: ListView.SnapOneItem
             orientation: ListView.Horizontal
             highlightRangeMode: ListView.StrictlyEnforceRange
@@ -87,48 +100,74 @@ TulipTemplates.DateSelector {
             delegate: Column {
                 id: monthGridDelegate
 
+
                 property var currentModel: model
 
-                Row {
-                    x: weekNumbers.width
-                    DayOfWeekRow {
-                        visible: dayOfWeekRowVisible
-                        //locale: grid.locale
-                        spacing: 0
+                Item {
+                    height: weekNamesRow.height
+                    width: weekNamesRow.width
+                    Rectangle {
+                        height: parent.height
+                        width: parent.width + 1
+                        color: ColorPalette.sunken
+                        border.width: 1
+                        border.color: ColorPalette.raisedBorder
+                        DayOfWeekRow {
+                            id: weekNamesRow
+                            visible: dayOfWeekRowVisible
+                            //locale: grid.locale
+                            spacing: 0
+                            topPadding: 0
+                            bottomPadding: 0
 
-                        delegate: Label {
-                            width: 32
-                            text: model.shortName
-                            font.weight: Font.DemiBold
-                            font.pixelSize: 13
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignVCenter
-                            color: "red"
+                            delegate: Label {
+                                width: 24
+                                height: 24
+                                text: model.shortName
+                                font.weight: Font.DemiBold
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+                                color: ColorPalette.content
+                            }
                         }
                     }
                 }
 
-                Row {
-                    WeekNumberColumn {
-                        id: weekNumbers
-                        visible: weekNumberVisible
-                        month: grid.month
-                        year: grid.year
-                        //locale: grid.locale
+                Item {
+                    width: grid.width
+                    height: grid.height
+                    x: 1
+//                    Rectangle {
+//                        width: weekNumbers.width
+//                        height: weekNumbers.height + 1
+//                        y: -1
+//                        color: ColorPalette.sunken
+//                        border.width: 1
+//                        border.color: ColorPalette.sunkenBorder
+//                        WeekNumberColumn {
+//                            id: weekNumbers
+//                            visible: weekNumberVisible
+//                            month: grid.month
+//                            year: grid.year
+//                            //locale: grid.locale
 
-                        width: 32
-                        height: grid.height
+//                            width: 24
+//                            spacing: 0
 
-                        delegate: Label {
-                            text: model.weekNumber
-                            font.weight: Font.DemiBold
-                            font.pixelSize: 13
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignVCenter
-                            color: "blue"
-                        }
+//                            delegate: Label {
+//                                height: 24
+//                                width: 24
+//                                leftPadding: 0
+//                                rightPadding: 0
+//                                text: model.weekNumber
+//                                font.weight: Font.DemiBold
+//                                horizontalAlignment: Text.AlignHCenter
+//                                verticalAlignment: Text.AlignVCenter
+//                                color: ColorPalette.content
+//                            }
 
-                    }
+//                        }
+//                    }
 
                     MonthGrid {
                         id: grid
@@ -139,36 +178,44 @@ TulipTemplates.DateSelector {
                         spacing: 0
 
                         delegate: Item {
-                            height: 32
-                            width: 32
+                            height: 24
+                            width: 24
+                            z: button.hovered || button.highlighted ? 1000 : 0
 
-                            Rectangle {
-                                height: parent.height
-                                width: parent.width
+                            ToolButton {
+                                id: button
+                                height: parent.height + 1
+                                width: parent.width + 1
                                 anchors.centerIn: parent
-                                color: ColorPalette.raised
-                                border.color: ColorPalette.raisedBorder
-                                border.width: 1
+                                text: model.day
+                                font.underline: model.today
+                                enabled: model.month === grid.month
+                                flat: !(model.month === grid.month)
+                                highlighted: isEqual(selectedDate)
 
-                                Label {
-                                    id: dayLabel
-                                    text: model.day
-                                    font.weight: Font.DemiBold
-                                    font.pixelSize: 13
-                                    font.underline: model.today
-                                    width: parent.width
-                                    height: parent.height
-                                    horizontalAlignment: Text.AlignHCenter
-                                    verticalAlignment: Text.AlignVCenter
-                                    color: "green"
-                                    opacity: model.month === grid.month ? 1 : 0
-                                }
+                                leftPadding: 0
+                                rightPadding: 0
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    enabled: model.month === grid.month
-                                    onClicked: control.selectedDate = model.date
-                                }
+                                onClicked: control.selectedDate = model.date
+
+//                                Label {
+//                                    id: dayLabel
+//                                    text: model.day
+//                                    font.weight: Font.DemiBold
+//                                    font.underline: model.today
+//                                    width: parent.width
+//                                    height: parent.height
+//                                    horizontalAlignment: Text.AlignHCenter
+//                                    verticalAlignment: Text.AlignVCenter
+//                                    color: "green"
+//                                    opacity: model.month === grid.month ? 1 : 0
+//                                }
+
+//                                MouseArea {
+//                                    anchors.fill: parent
+//                                    enabled: model.month === grid.month
+//                                    onClicked: control.selectedDate = model.date
+//                                }
 
                                 function isEqual(date) {
                                     return model.day === date.getDate() &&

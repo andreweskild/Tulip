@@ -32,6 +32,7 @@ T.MenuItem {
         radius: 0
         hovered: control.hovered
         pressed: control.pressed
+        highlighted: control.highlighted
         opacity: 0
     }
 
@@ -46,7 +47,7 @@ T.MenuItem {
 
         },
         State {
-            name: "hovered"; when: control.hovered
+            name: "hovered"; when: control.hovered || control.highlighted
             PropertyChanges { target: gradientRect;  opacity: 1}
             PropertyChanges { target: label;  color: ColorPalette.contentAccented}
         }

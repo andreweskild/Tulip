@@ -46,6 +46,9 @@ Label {
     lineHeight: level <= 1 ? 24.0 : 28.0
     lineHeightMode: Text.FixedHeight
 
+    verticalAlignment: "AlignVCenter"
+    horizontalAlignment: "AlignHCenter"
+
     onLevelChanged: {
         if (level < 1 || level > 2)
             console.error("BodyLabel level must be either 1 or 2");

@@ -23,20 +23,20 @@ T.ItemDelegate {
     background: Item {
         implicitHeight: 24
 
-        Rectangle {
-            id: highlightRect
-            anchors.fill: parent
-            color: ColorPalette.accentHighlight
-            border.color: ColorPalette.accent
-            opacity: 0
-            Rectangle {
-                anchors.right: parent.right
-                anchors.rightMargin: -1
-                height: parent.height
-                width: 4
-                color: ColorPalette.accent
-            }
-        }
+//        Rectangle {
+//            id: highlightRect
+//            anchors.fill: parent
+//            color: ColorPalette.accentHighlight
+//            border.color: ColorPalette.accent
+//            opacity: 0
+//            Rectangle {
+//                anchors.right: parent.right
+//                anchors.rightMargin: -1
+//                height: parent.height
+//                width: 4
+//                color: ColorPalette.accent
+//            }
+//        }
 
         ClickEffect {
             id: clickEffect
@@ -54,6 +54,7 @@ T.ItemDelegate {
             radius: 0
             hovered: control.hovered
             pressed: control.pressed
+            highlighted: control.highlighted
             opacity: 0
         }
     }
@@ -68,12 +69,8 @@ T.ItemDelegate {
 
         },
         State {
-            name: "hovered"; when: control.hovered
+            name: "hovered"; when: control.hovered || control.highlighted
             PropertyChanges { target: gradientRect;  opacity: 1}
-        },
-        State {
-            name: "active"; when: control.highlighted
-            PropertyChanges { target: highlightRect;  opacity: 1}
         }
     ]
 
